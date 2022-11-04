@@ -95,9 +95,9 @@
                     >
                     <div class="uk-form-controls">
                       <input
-                        id="name"
+                        id="uname"
                         class="uk-input uk-border-rounded"
-                        name="name"
+                        name="uname"
                         type="text"
                         placeholder="your email...."
                         required=""
@@ -110,9 +110,9 @@
                     >
                     <div class="uk-form-controls">
                       <input
-                        id="pwd"
+                        id="upw"
                         class="uk-input uk-border-rounded"
-                        name="pwd"
+                        name="upw"
                         type="password"
                         placeholder="your password...."
                         required=""
