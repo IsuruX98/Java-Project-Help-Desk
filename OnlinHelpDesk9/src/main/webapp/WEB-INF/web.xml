@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>regi</display-name>
+    <servlet-name>regi</servlet-name>
+    <servlet-class>onlinehelpdesk.regi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>regi</servlet-name>
+    <url-pattern>/regi</url-pattern>
+  </servlet-mapping>
 </web-app>

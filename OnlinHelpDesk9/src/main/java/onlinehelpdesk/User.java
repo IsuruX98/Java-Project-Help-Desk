@@ -7,16 +7,14 @@ public class User {
 	private String uemail;
 	private String umobile;
 	private String upw;
-	private String type;
 	
-	public User(int id, String uname, String uemail, String umobile, String upw, String type) {
+	public User(int id, String uname, String uemail, String umobile, String upw) {
 		
 		this.id = id;
 		this.uname = uname;
 		this.uemail = uemail;
 		this.umobile = umobile;
 		this.upw = upw;
-		this.type = type;
 	}
 
 	public int getId() {
@@ -39,7 +37,4 @@ public class User {
 		return upw;
 	}
 
-	public String getType() {
-		return type;
-	}
 }

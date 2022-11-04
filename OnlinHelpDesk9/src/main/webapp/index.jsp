@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <!-- importing the tag library connection -->
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
   <head>
@@ -59,7 +62,7 @@
                   <li><a href="#">menu 04</a></li>
                   <li>
                     <div class="uk-navbar-item">
-                      <a
+                    	<a
                         class="uk-button uk-button-small uk-text-bold"
                         href="login.jsp"
                         >Login</a

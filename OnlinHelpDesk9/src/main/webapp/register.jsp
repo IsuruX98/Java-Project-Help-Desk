@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<!-- importing the tag library connection -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+    
 <!DOCTYPE html>
+
 <html lang="en-gb" dir="ltr">
   <head>
     <meta charset="utf-8" />
@@ -19,6 +24,10 @@
   </head>
 
   <body>
+  
+  <!-- to catch the servlet status msg -->
+	<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+  
     <!-- header -->
 
     <header>
@@ -87,7 +96,7 @@
               <h1 class="uk-text-center uk-text-bolder">Register</h1>
               <div class="uk-article-content">
                 <form
-                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom"
+                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom" action="reg" method="post"
                 >
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
@@ -137,9 +146,9 @@
                     >
                     <div class="uk-form-controls">
                       <input
-                        id="pwd"
+                        id="upw"
                         class="uk-input uk-border-rounded"
-                        name="pwd"
+                        name="upw"
                         type="password"
                         required=""
                       />
@@ -297,5 +306,20 @@
     </footer>
 
     <!-- footer ends -->
+    
+    <!-- JS alert for registration is done -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+	
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+	if (status == "success") {
+		swal("congrats","account created successfully","success");
+	}else if(status == "deleted") {
+		swal("Done","account Deleted successfully","success");
+	}
+	</script>
   </body>
 </html>

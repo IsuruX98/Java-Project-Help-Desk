@@ -19,6 +19,10 @@
   </head>
 
   <body>
+  
+  <!-- status from util class -->
+  <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+  
     <!-- header -->
 
     <header>
@@ -87,7 +91,7 @@
               <h1 class="uk-text-center uk-text-bolder">Login</h1>
               <div class="uk-article-content">
                 <form
-                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom"
+                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom" action="login" method="post"
                 >
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
@@ -98,9 +102,9 @@
                         id="uname"
                         class="uk-input uk-border-rounded"
                         name="uname"
-                        type="text"
+                        type="email"
                         placeholder="your email...."
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -115,7 +119,7 @@
                         name="upw"
                         type="password"
                         placeholder="your password...."
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -258,5 +262,25 @@
     </footer>
 
     <!-- footer ends -->
+    
+    <!-- JS alert for registration is done -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+	 
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+	if (status == "failed") {
+		swal("Sorry","wrong username or password","error");
+	}else if (status == "invalidemail") {
+		swal("Sorry","Please Enter Username","error");
+	}else if (status == "invalidupwd") {
+		swal("Sorry","Please Enter Password","error");
+	}else if (status == "updatedone") {
+		swal("Done","profile updated successfully please relogin","success");
+	}
+	</script>
+    
   </body>
 </html>
