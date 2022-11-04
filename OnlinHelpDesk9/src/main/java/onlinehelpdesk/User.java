@@ -1,4 +1,4 @@
-package helpdesk;
+package onlinehelpdesk;
 
 public class User {
 	
@@ -42,5 +42,4 @@ public class User {
 	public String getType() {
 		return type;
 	}
-	
 }
