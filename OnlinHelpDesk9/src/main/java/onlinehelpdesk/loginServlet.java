@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/login")
@@ -66,7 +69,19 @@ public class loginServlet extends HttpServlet {
 				}else if (isTrue == true) {
 					
 					//creating the session
-					session.setAttribute("name", "user");
+					
+					int id = Integer.parseInt(UserDBUtil.user.get("id"));
+					String name = UserDBUtil.user.get("name");
+					String email = UserDBUtil.user.get("email");
+					String mobile = UserDBUtil.user.get("mobile");
+					String pw = UserDBUtil.user.get("pw");
+					
+					session.setAttribute("id", id);
+					session.setAttribute("name", name);
+					session.setAttribute("email", email);
+					session.setAttribute("mobile", mobile);
+					session.setAttribute("pw", pw);
+					
 					request.setAttribute("userDetails", userDetails);
 					request.setAttribute("status", "pass");
 					//redirect to another page
@@ -78,7 +93,7 @@ public class loginServlet extends HttpServlet {
 				}
 				//finalizing the dispatcher
 				dis.forward(request, response);
-		
+					
 		
 	}
 

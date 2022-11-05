@@ -93,37 +93,30 @@
 	
 	<!-- looping the user data using c tag library -->
 	
-	<c:forEach var="user" items="${userDetails}">
 	
-	<!-- storing the user data into variables -->
-	<c:set var="id" value="${user.id}"/>
-	<c:set var="name" value="${user.uname}"/>
-	<c:set var="pwd" value="${user.upw}"/>
-	<c:set var="email" value="${user.uemail}"/>
-	<c:set var="mobile" value="${user.umobile}"/>
 
                 <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >User ID : ${user.id}</label
+                      >User ID : <%= session.getAttribute("id")%></label
                     >
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >Name : ${user.uname} </label
+                      >Name : <%= session.getAttribute("name")%> </label
                     >
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >E-mail : ${user.uemail}</label
+                      >E-mail : <%= session.getAttribute("email")%></label
                     >
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >Mobile Number : ${user.umobile}</label
+                      >Mobile Number : <%= session.getAttribute("mobile")%></label
                     >
                   </div>
                   <br />
-     </c:forEach>             
+                 
 
                   <div class="uk-margin-bottom">
                     <div class="uk-text-center">
@@ -137,19 +130,13 @@
                   
             <!-- storing the data into a link that need to pass to another page and storing them in to a single variable -->
 			
-			<c:url value="updateuser.jsp" var="userupdate">
-			<c:param name="id" value="${id}" />
-			<c:param name="name" value="${name}" />
-			<c:param name="pwd" value="${pwd}" />
-			<c:param name="email" value="${email}" />
-			<c:param name="mobile" value="${mobile}" />
-			</c:url>
+			
 
 				   <div class="uk-margin-bottom">
                       <div class="uk-text-center">
                       
                       <!-- passing the variable that stored data and the link in the above to the below anchor, so that when we click that button it will redirect us to another page with the data  -->
-						<a href="${userupdate}">
+						<a href="updateuser.jsp">
 						
                          <input class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
                           type="button" name="update" value="update my data"/>

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.mysql.cj.xdevapi.Statement;
@@ -17,6 +18,7 @@ public class UserDBUtil {
 	private static Statement stmt = null;
 	private static PreparedStatement pst = null;
 	private static ResultSet rs = null;
+	static HashMap<String, String> user;
 	
 	//method for validating the user
 	public boolean validateUser(String uemail,String upw) {
@@ -33,7 +35,21 @@ public class UserDBUtil {
 		rs = pst.executeQuery();
 		
 		if(rs.next()) {
+			String id = rs.getString(1);
+			String name = rs.getString(2);
+			String email = rs.getString(3);
+			String mobile = rs.getString(4);
+			String pwd = rs.getString(5);
 			String type = rs.getString(6);
+			
+			user = new HashMap<>();
+			
+			user.put("id", id);
+			user.put("name", name);
+			user.put("email", email);
+			user.put("mobile", mobile);
+			user.put("pw", pwd);
+
 
 			if (type.equals("admin")) {
 				userCheck = true;

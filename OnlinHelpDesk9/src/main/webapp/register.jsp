@@ -320,7 +320,7 @@
 	}if(status == "deleted") {
 		swal("Done","account Deleted successfully","success");
 	}if (status == "pwdmissmatch") {
-		swal("Soory","password miss match","error");
+		swal("Sorry","password miss match","error");
 	}
 	</script>
   </body>

@@ -24,15 +24,6 @@
   </head>
 
   <body>
-  
-  <!-- catching the data form the url and storing them into variables -->
-	<%
-		String id = request.getParameter("id");
-	  	String name = request.getParameter("name");
-		String pwd = request.getParameter("pwd");
-		String email = request.getParameter("email");
-		String mobile = request.getParameter("mobile");
-	%>
 	
 	
   
@@ -120,7 +111,7 @@
                         class="uk-input uk-border-rounded"
                         name="id"
                         type="text"
-                        value="<%=id%>"
+                        value="<%= session.getAttribute("id")%>"
                         readonly="readonly"
                         required=""
                       />
@@ -136,7 +127,7 @@
                         class="uk-input uk-border-rounded"
                         name="uname"
                         type="text"
-                        value="<%=name%>"
+                        value="<%= session.getAttribute("name")%>"
                         required=""
                       />
                     </div>
@@ -151,7 +142,7 @@
                         class="uk-input uk-border-rounded"
                         name="uemail"
                         type="email"
-                        value="<%=email%>"
+                        value="<%= session.getAttribute("email")%>"
                         required=""
                       />
                     </div>
@@ -166,7 +157,7 @@
                         class="uk-input uk-border-rounded"
                         name="umobile"
                         type="text"
-                        value="<%=mobile%>"
+                        value="<%= session.getAttribute("mobile")%>"
                         required=""
                       />
                     </div>
@@ -180,22 +171,8 @@
                         id="upw"
                         class="uk-input uk-border-rounded"
                         name="upw"
-                        type="text"
-                        value="<%=pwd%>"
-                        required=""
-                      />
-                    </div>
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="_replyto"
-                      >Reapeat Password</label
-                    >
-                    <div class="uk-form-controls">
-                      <input
-                        id="pwd"
-                        class="uk-input uk-border-rounded"
-                        name="rpw"
                         type="password"
+                        value="<%= session.getAttribute("pw")%>"
                         required=""
                       />
                     </div>
@@ -342,10 +319,8 @@
 	<script type="text/javascript">
 	
 	var status = document.getElementById("status").value;
-	if (status == "success") {
-		swal("congrats","account created successfully","success");
-	}else if(status == "deleted") {
-		swal("Done","account Deleted successfully","success");
+	if (status == "pwdmissmatch") {
+		swal("Sorry","password miss match","error");
 	}
 	</script>
   </body>
