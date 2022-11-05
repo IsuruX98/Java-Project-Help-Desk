@@ -8,14 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.mysql.cj.xdevapi.Statement;
-
 public class UserDBUtil {
 	
 	private static boolean isSuccess = false;
 	static boolean userCheck = false;
 	private static Connection con = null;
-	private static Statement stmt = null;
 	private static PreparedStatement pst = null;
 	private static ResultSet rs = null;
 	static HashMap<String, String> user;
