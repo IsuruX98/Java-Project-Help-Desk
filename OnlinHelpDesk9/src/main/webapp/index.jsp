@@ -31,7 +31,8 @@
 
   <body>
     <!-- header -->
-    <!-- looping the user data using c tag library -->
+    <!-- status from util class -->
+  <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 
     <header>
       <div
@@ -492,5 +493,15 @@
     </footer>
 
     <!-- footer ends -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+	 
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+	if (status == "contactusdone") {
+		swal("Success","we will contact you via e-mail","success");
+	}
+	</script>
   </body>
 </html>

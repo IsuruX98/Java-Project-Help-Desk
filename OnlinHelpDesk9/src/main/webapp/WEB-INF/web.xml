@@ -59,4 +59,14 @@
     <servlet-name>logoutServlet</servlet-name>
     <url-pattern>/logoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>contactUsServlet</display-name>
+    <servlet-name>contactUsServlet</servlet-name>
+    <servlet-class>onlinehelpdesk.contactUsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>contactUsServlet</servlet-name>
+    <url-pattern>/contactUsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

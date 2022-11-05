@@ -20,6 +20,8 @@
 
   <body>
     <!-- header -->
+    <!-- status from util class -->
+  	<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 
     <header>
       <div
@@ -87,7 +89,7 @@
               <h1 class="uk-text-center uk-text-bolder">Contact Us</h1>
               <div class="uk-article-content">
                 <form
-                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom"
+                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom" action="contactus" method="post"
                 >
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
@@ -95,9 +97,9 @@
                     >
                     <div class="uk-form-controls">
                       <input
-                        id="name"
+                        id="cname"
                         class="uk-input uk-border-rounded"
-                        name="name"
+                        name="cname"
                         type="text"
                         placeholder="your name...."
                         required=""
@@ -110,9 +112,9 @@
                     >
                     <div class="uk-form-controls">
                       <input
-                        id="uemail"
+                        id="cemail"
                         class="uk-input uk-border-rounded"
-                        name="uemail"
+                        name="cemail"
                         type="email"
                         placeholder="your email...."
                         required=""
@@ -125,9 +127,9 @@
                     >
                     <div class="uk-form-controls">
                       <input
-                        id="subject"
+                        id="csubject"
                         class="uk-input uk-border-rounded"
-                        name="subject"
+                        name="csubject"
                         type="text"
                         placeholder="your subject...."
                         required=""
@@ -138,9 +140,9 @@
                     <label class="uk-form-label" for="message">Message</label>
                     <div class="uk-form-controls">
                       <textarea
-                        id="message"
+                        id="cmessage"
                         class="uk-textarea uk-border-rounded"
-                        name="message"
+                        name="cmessage"
                         rows="5"
                         minlength="10"
                         required=""
@@ -282,5 +284,15 @@
     </footer>
 
     <!-- footer ends -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+	 
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+	if (status == "contactusfail") {
+		swal("Faild","there was a error","error");
+	}
+	</script>
   </body>
 </html>

@@ -188,5 +188,46 @@ public class UserDBUtil {
 		}
 		return isSuccess;
 	}
+        
+    //method for store contact us details
+        public boolean storeContactUs(String name,String email,String subject,String msg) {
+        	
+        	try {
+    			//making the database connection
+    			con = DBConnect.getConnection();
+    			
+    			//passing the values to the database table
+    			pst = con.prepareStatement("insert into contactus(cname,cemail,csubject,cmessage) values(?,?,?,?)");
+    			
+    			pst.setString(1, name);
+    			pst.setString(2, email);
+    			pst.setString(3, subject);
+    			pst.setString(4, msg);
+    			
+    			//executing the query
+    			int rawCount = pst.executeUpdate();
+    			
+    			//Checking the query has errors or not
+    			if (rawCount > 0) {
+    				isSuccess = true;
+    	
+    			}else {
+    				isSuccess = false;
+    			}
+    			
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}finally { 
+    			try {
+    				con.close();//closing the connection 
+    			} catch (SQLException e) {
+    				e.printStackTrace();
+    			}
+    		}
+        	
+        	
+        	return isSuccess;
+        	
+        }
 	
 }
