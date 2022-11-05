@@ -110,6 +110,22 @@
     </header>
 
     <!-- header ends -->
+    <!-- looping the user data using c tag library -->
+	
+	<c:forEach var="user" items="${userDetails}">
+	
+	<!-- storing the user data into variables -->
+	<c:set var="id" value="${user.id}"/>
+	<c:set var="name" value="${user.uname}"/>
+	<c:set var="pwd" value="${user.upw}"/>
+	<c:set var="email" value="${user.uemail}"/>
+	<c:set var="mobile" value="${user.umobile}"/>
+	
+	<% String id = "${user.id}"; 
+	out.print(id);
+	%>
+	
+	</c:forEach>
 
     <!-- About us -->
     <div class="uk-section uk-section-default">
