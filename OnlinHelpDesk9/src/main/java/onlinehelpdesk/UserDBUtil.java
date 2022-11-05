@@ -34,7 +34,6 @@ public class UserDBUtil {
 		
 		if(rs.next()) {
 			String type = rs.getString(6);
-			System.out.println(type);
 
 			if (type.equals("admin")) {
 				userCheck = true;
@@ -127,6 +126,53 @@ public class UserDBUtil {
 			}
 		}
 		
+		return isSuccess;
+	}
+	   //method for updating user
+       public boolean updateUser(String id,String name,String email,String mobile,String pw) {
+		
+		try {
+			con = DBConnect.getConnection();
+			
+			pst = con.prepareStatement("update users set uname='"+name+"',uemail='"+email+"',umobile='"+mobile+"',upw='"+pw+"'"
+    				+ "where id='"+id+"'");
+			
+			int rs = pst.executeUpdate();
+			
+			//Checking the query has errors or not
+			if (rs > 0) {
+				isSuccess = true;
+	
+			}else {
+				isSuccess = false;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isSuccess;
+	}
+	
+     //method for deleting user
+        public boolean deleteUser(String id) {
+		
+		try {
+			con = DBConnect.getConnection();
+			
+			pst = con.prepareStatement("delete from users where id='"+id+"'");
+			int rs = pst.executeUpdate();
+			
+			//Checking the query has errors or not
+			if (rs > 0) {
+				isSuccess = true;
+	
+			}else {
+				isSuccess = false;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return isSuccess;
 	}
 	

@@ -21,9 +21,7 @@
   </head>
 
   <body>
-    <!-- header -->
-
-    <header>
+  <header>
       <div
         class="uk-background-secondary"
         uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
@@ -75,7 +73,6 @@
         </nav>
       </div>
     </header>
-
     <!-- header ends -->
 	
     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
@@ -89,23 +86,43 @@
               <h1 class="uk-text-center uk-text-bolder">User Profile</h1>
               <div class="uk-article-content">
                 <div class="uk-margin-medium-top uk-margin-medium-bottom">
-                  <div class="uk-margin-bottom">
+                
+                <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+	
+	
+	<!-- looping the user data using c tag library -->
+	
+	<c:forEach var="user" items="${userDetails}">
+	
+	<!-- storing the user data into variables -->
+	<c:set var="id" value="${user.id}"/>
+	<c:set var="name" value="${user.uname}"/>
+	<c:set var="pwd" value="${user.upw}"/>
+	<c:set var="email" value="${user.uemail}"/>
+	<c:set var="mobile" value="${user.umobile}"/>
+
+                <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >Name</label
+                      >User ID : ${user.id}</label
                     >
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >E-mail</label
+                      >Name : ${user.uname} </label
                     >
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
-                      >Mobile Number</label
+                      >E-mail : ${user.uemail}</label
+                    >
+                  </div>
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >Mobile Number : ${user.umobile}</label
                     >
                   </div>
                   <br />
-                  
+     </c:forEach>             
 
                   <div class="uk-margin-bottom">
                     <div class="uk-text-center">
@@ -116,42 +133,64 @@
                       />
                     </div>
                   </div>
+                  
+            <!-- storing the data into a link that need to pass to another page and storing them in to a single variable -->
+			
+			<c:url value="updateuser.jsp" var="userupdate">
+			<c:param name="id" value="${id}" />
+			<c:param name="name" value="${name}" />
+			<c:param name="pwd" value="${pwd}" />
+			<c:param name="email" value="${email}" />
+			<c:param name="mobile" value="${mobile}" />
+			</c:url>
 
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
+				   <div class="uk-margin-bottom">
                       <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                          type="submit"
-                          value="update profile"
-                        />
+                      
+                      <!-- passing the variable that stored data and the link in the above to the below anchor, so that when we click that button it will redirect us to another page with the data  -->
+						<a href="${userupdate}">
+						
+                         <input class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
+                          type="button" name="update" value="update my data"/>
+                        
+						</a>
+						
                       </div>
                     </div>
-                  </form>
+	
+	
 
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
+                  <div class="uk-margin-bottom">
                       <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small"
-                          type="submit"
-                          value="logout"
-                        />
-                      </div>
+                   
+					<a class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" href="logout">Logout</a> 
+                  </div>
                     </div>
-                  </form>
 
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
+                  
+                    
+                      
+                      
+
+                  
+                  <!-- to delete data  -->
+                  
+				<form action="delete" method="post" onsubmit="submitForm();">
+				
+				<div class="uk-margin-bottom">
                       <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small"
-                          type="submit"
-                          value="delete my profile"
-                        />
-                      </div>
-                    </div>
-                  </form>
+				<c:forEach var="user" items="${userDetails}">
+				
+				<input type="hidden" name="deletedataid" value="${user.id}">
+								
+				</c:forEach>
+	
+				<input class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" type="submit" name="submit" value="delete my data">
+				
+				</div>
+                </div>
+				</form>
+                  
                 </div>
               </div>
             </article>
@@ -165,7 +204,7 @@
           <div class="uk-position-center uk-position-relative">
             <img
               width="500px"
-              src="/Help Desk//src/img/userProfile.jpg"
+              src="img/userProfile.jpg"
               alt=""
             />
           </div>
@@ -173,7 +212,9 @@
       </div>
     </div>
 
-    <!-- responsive menu -->
+
+	
+	<!-- responsive menu -->
 
     <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
       <div class="uk-offcanvas-bar">
@@ -283,5 +324,34 @@
     </footer>
 
     <!-- footer ends -->
-  </body>
+
+<!-- JS alert for delete is fail -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+
+		function submitForm(){
+			Swal.fire({
+				  title: 'Are you sure?',
+				  text: "You won't be able to revert this!",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    Swal.fire(
+				      'Deleted!',
+				      'Your file has been deleted.',
+				      'success'
+				    )
+				  }
+				})
+		}
+	</script>	
+</body>
 </html>

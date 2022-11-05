@@ -29,4 +29,34 @@
     <servlet-name>regi</servlet-name>
     <url-pattern>/regi</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>deleteUserServlet</display-name>
+    <servlet-name>deleteUserServlet</servlet-name>
+    <servlet-class>onlinehelpdesk.deleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteUserServlet</servlet-name>
+    <url-pattern>/deleteUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>updateUserServlet</display-name>
+    <servlet-name>updateUserServlet</servlet-name>
+    <servlet-class>onlinehelpdesk.updateUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateUserServlet</servlet-name>
+    <url-pattern>/updateUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>logoutServlet</display-name>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>onlinehelpdesk.logoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/logoutServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

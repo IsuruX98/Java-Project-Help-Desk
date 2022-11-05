@@ -63,11 +63,11 @@ public class loginServlet extends HttpServlet {
 				}else if (isTrue == true) {
 					
 					//creating the session
-					session.setAttribute("name", uemail);
+					session.setAttribute("name", "user");
 					request.setAttribute("userDetails", userDetails);
 					request.setAttribute("status", "pass");
 					//redirect to another page
-					dis = request.getRequestDispatcher("index.jsp");
+					dis = request.getRequestDispatcher("acc.jsp");
 				
 				}else {
 					request.setAttribute("status", "failed");

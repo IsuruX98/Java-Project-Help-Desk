@@ -1,3 +1,4 @@
+<%@page import="com.mysql.cj.Session"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <!-- importing the tag library connection -->
@@ -61,12 +62,24 @@
                   <li><a href="#">menu 03</a></li>
                   <li><a href="#">menu 04</a></li>
                   <li>
+                  	
                     <div class="uk-navbar-item">
-                    	<a
-                        class="uk-button uk-button-small uk-text-bold"
-                        href="login.jsp"
-                        >Login</a
-                      >
+                    
+                    <%
+					if(session.getAttribute("name")==null){
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
+					}else{
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"userProfile.jsp\">");
+						%>
+						<c:forEach var="user" items="${userDetails}">
+						${user.uname}
+						</c:forEach>
+						<%
+						out.print("</a>");
+					}
+					%>
+					
+
                     </div>
                   </li>
                 </ul>

@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <!-- importing the tag library connection -->
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+<!-- importing the tag library connection -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+    
 <!DOCTYPE html>
+
 <html lang="en-gb" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>User Profile</title>
+    <title>Update User</title>
 
     <!-- UIkit CSS -->
     <link
@@ -21,6 +24,21 @@
   </head>
 
   <body>
+  
+  <!-- catching the data form the url and storing them into variables -->
+	<%
+		String id = request.getParameter("id");
+	  	String name = request.getParameter("name");
+		String pwd = request.getParameter("pwd");
+		String email = request.getParameter("email");
+		String mobile = request.getParameter("mobile");
+	%>
+	
+	
+  
+  <!-- to catch the servlet status msg -->
+	<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+  
     <!-- header -->
 
     <header>
@@ -77,7 +95,7 @@
     </header>
 
     <!-- header ends -->
-	
+
     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
       <div>
         <div class="uk-card">
@@ -86,88 +104,120 @@
               class="uk-article uk-margin-large"
               data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
             >
-              <h1 class="uk-text-center uk-text-bolder">User Profile</h1>
+              <h1 class="uk-text-center uk-text-bolder">Upadte Profile</h1>
               <div class="uk-article-content">
-                <div class="uk-margin-medium-top uk-margin-medium-bottom">
+                <form
+                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom" action="update" method="post"
+                >
+                <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >User ID</label
+                    >
+                    <div class="uk-form-controls">
+                    <!-- if you want to display a java variable into html tag use below notation -->
+                      <input
+                        id="id"
+                        class="uk-input uk-border-rounded"
+                        name="id"
+                        type="text"
+                        value="<%=id%>"
+                        readonly="readonly"
+                        required=""
+                      />
+                    </div>
+                  </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
                       >Name</label
                     >
+                    <div class="uk-form-controls">
+                      <input
+                        id="uname"
+                        class="uk-input uk-border-rounded"
+                        name="uname"
+                        type="text"
+                        value="<%=name%>"
+                        required=""
+                      />
+                    </div>
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
                       >E-mail</label
                     >
+                    <div class="uk-form-controls">
+                      <input
+                        id="uemail"
+                        class="uk-input uk-border-rounded"
+                        name="uemail"
+                        type="email"
+                        value="<%=email%>"
+                        required=""
+                      />
+                    </div>
                   </div>
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
                       >Mobile Number</label
                     >
-                  </div>
-                  <br />
-                  
-
-                  <div class="uk-margin-bottom">
-                    <div class="uk-text-center">
+                    <div class="uk-form-controls">
                       <input
-                        class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                        type="submit"
-                        value="my tickets"
+                        id="umobile"
+                        class="uk-input uk-border-rounded"
+                        name="umobile"
+                        type="text"
+                        value="<%=mobile%>"
+                        required=""
                       />
                     </div>
                   </div>
-
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                          type="submit"
-                          value="update profile"
-                        />
-                      </div>
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="_replyto"
+                      >Password</label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="upw"
+                        class="uk-input uk-border-rounded"
+                        name="upw"
+                        type="text"
+                        value="<%=pwd%>"
+                        required=""
+                      />
                     </div>
-                  </form>
-
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small"
-                          type="submit"
-                          value="logout"
-                        />
-                      </div>
+                  </div>
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="_replyto"
+                      >Reapeat Password</label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="pwd"
+                        class="uk-input uk-border-rounded"
+                        name="rpwd"
+                        type="password"
+                        required=""
+                      />
                     </div>
-                  </form>
-
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small"
-                          type="submit"
-                          value="delete my profile"
-                        />
-                      </div>
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                  <br />
+                  <div class="uk-text-center">
+                    <input
+                      class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
+                      type="submit"
+                      value="Update Profile"
+                    />
+                  </div>
+                </form>
               </div>
             </article>
           </div>
         </div>
       </div>
-     
-
       <div>
-        <div class="uk-card uk-background-default">
+        <div class="uk-card uk-background-default uk-hidden\@l">
           <div class="uk-position-center uk-position-relative">
-            <img
-              width="500px"
-              src="/Help Desk//src/img/userProfile.jpg"
-              alt=""
-            />
+            <img width="650px" src="img/update.jpg" alt="" />
           </div>
         </div>
       </div>
@@ -182,7 +232,7 @@
         <ul
           class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-          <li><a href="index.jsp">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#">menu 01</a></li>
           <li><a href="#">menu 02</a></li>
           <li><a href="#">menu 03</a></li>
@@ -283,5 +333,20 @@
     </footer>
 
     <!-- footer ends -->
+    
+    <!-- JS alert for registration is done -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+	
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+	if (status == "success") {
+		swal("congrats","account created successfully","success");
+	}else if(status == "deleted") {
+		swal("Done","account Deleted successfully","success");
+	}
+	</script>
   </body>
 </html>
