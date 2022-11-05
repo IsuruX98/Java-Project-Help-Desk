@@ -14,9 +14,11 @@ import java.util.List;
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    static List<User> userDetails;    
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		
 		//getting the user inputs
 		String uemail = request.getParameter("uname");
@@ -49,7 +51,8 @@ public class loginServlet extends HttpServlet {
 		        isTrue = o.validateUser(uemail, upw);
 		        
 		        //storing user data
-		      	List<User> userDetails = o.getUserDetails(uemail, upw);
+		      	userDetails = o.getUserDetails(uemail, upw);
+		      	
 		      	
 				if (UserDBUtil.userCheck == true) {
 					
@@ -67,7 +70,7 @@ public class loginServlet extends HttpServlet {
 					request.setAttribute("userDetails", userDetails);
 					request.setAttribute("status", "pass");
 					//redirect to another page
-					dis = request.getRequestDispatcher("acc.jsp");
+					dis = request.getRequestDispatcher("index.jsp");
 				
 				}else {
 					request.setAttribute("status", "failed");

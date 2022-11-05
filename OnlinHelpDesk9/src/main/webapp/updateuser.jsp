@@ -194,7 +194,7 @@
                       <input
                         id="pwd"
                         class="uk-input uk-border-rounded"
-                        name="rpwd"
+                        name="rpw"
                         type="password"
                         required=""
                       />

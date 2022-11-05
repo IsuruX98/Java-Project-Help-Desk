@@ -18,11 +18,22 @@ public class registrationServlet extends HttpServlet {
 		String uemail = request.getParameter("uemail");
 		String umobile = request.getParameter("umobile");
 		String upw = request.getParameter("upw");
+		String rpwd = request.getParameter("rpwd");
 		
-		boolean isTrue;
 		
 		//for redirect after adding the data to the table
 		RequestDispatcher dispatcher = null;
+		
+		//validations
+		if (upw != rpwd) {
+			request.setAttribute("status", "pwdmissmatch");
+			dispatcher = request.getRequestDispatcher("register.jsp");
+			dispatcher.forward(request, response);
+		}else {
+		
+		boolean isTrue;
+		
+		
 		
 		UserDBUtil o = new UserDBUtil();
 		isTrue = o.insertuser(uname, uemail, umobile, upw);
@@ -40,6 +51,7 @@ public class registrationServlet extends HttpServlet {
 		
 		dispatcher.forward(request, response);
 		
+		}
 	}
 
 }

@@ -31,6 +31,7 @@
 
   <body>
     <!-- header -->
+    <!-- looping the user data using c tag library -->
 
     <header>
       <div
@@ -56,7 +57,7 @@
               </div>
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
-                  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.jsp">Home</a></li>
                   <li><a href="#">menu 01</a></li>
                   <li><a href="#">menu 02</a></li>
                   <li><a href="#">menu 03</a></li>
@@ -69,13 +70,7 @@
 					if(session.getAttribute("name")==null){
 						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
 					}else{
-						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"userProfile.jsp\">");
-						%>
-						<c:forEach var="user" items="${userDetails}">
-						${user.uname}
-						</c:forEach>
-						<%
-						out.print("</a>");
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">User Account</a>");
 					}
 					%>
 					

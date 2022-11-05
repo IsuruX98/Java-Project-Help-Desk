@@ -19,10 +19,18 @@ public class updateUserServlet extends HttpServlet {
 		String email = request.getParameter("uemail");
 		String mobile = request.getParameter("umobile");
 		String pw = request.getParameter("upw");
+		String rpw = request.getParameter("rpw");
 		
 		boolean isTrue;
 		//making a dispatcher object to redirect
 		RequestDispatcher dis = null;
+		
+		//validations
+		if (pw != rpw) {
+			request.setAttribute("status", "pwdmissmatch");
+			dis = request.getRequestDispatcher("register.jsp");
+			dis.forward(request, response);
+		}else {
 		
 		UserDBUtil o = new UserDBUtil();
 		isTrue = o.updateUser(id, name, email, mobile, pw);
@@ -36,6 +44,7 @@ public class updateUserServlet extends HttpServlet {
 		}
 		dis.forward(request, response);
 		
+		}
 	}
 
 }

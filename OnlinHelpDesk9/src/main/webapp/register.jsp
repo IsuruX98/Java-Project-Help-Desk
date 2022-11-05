@@ -317,8 +317,10 @@
 	var status = document.getElementById("status").value;
 	if (status == "success") {
 		swal("congrats","account created successfully","success");
-	}else if(status == "deleted") {
+	}if(status == "deleted") {
 		swal("Done","account Deleted successfully","success");
+	}if (status == "pwdmissmatch") {
+		swal("Soory","password miss match","error");
 	}
 	</script>
   </body>
