@@ -167,11 +167,8 @@
 				
 				<div class="uk-margin-bottom">
                       <div class="uk-text-center">
-				<c:forEach var="user" items="${userDetails}">
 				
-				<input type="hidden" name="deletedataid" value="${user.id}">
-								
-				</c:forEach>
+				<input type="hidden" name="deletedataid" value="<%= session.getAttribute("id")%>">
 	
 				<input class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" type="submit" name="submit" value="delete my data">
 				

@@ -61,7 +61,7 @@ public class updateUserServlet extends HttpServlet {
 		}
 		dispatcher.forward(request, response);
 		
-				}
+	  }
 	  
 
    }
