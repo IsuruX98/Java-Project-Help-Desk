@@ -104,7 +104,9 @@
 
     <!-- header ends -->
 
-    <div class="uk-section uk-section-muted">
+    <div class="uk-section uk-position-relative uk-position-z-index uk-background-fixed uk-light" style="background-image: url(img/home.jpg)">
+    
+        
       <div
         class="uk-container"
         data-uk-scrollspy="cls: uk-animation-scale-up; repeat: true"
@@ -121,7 +123,7 @@
             <div
               class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
             >
-              <a class="uk-position-cover" href="contactus"></a>View User Message List
+              <a class="uk-position-cover" href="msglist"></a>View Message List
             </div>
           </div>
         </div>

@@ -89,8 +89,8 @@
     <div class="uk-section uk-section-default">
     <h1 class="uk-text-center uk-text-bolder">User List</h1>
     <div class="uk-container uk-container-medium">
-    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
-    <thead>
+    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover ">
+    <thead class="uk-background-secondary">
         <tr>
             <th>User ID</th>
             <th>User Name</th>

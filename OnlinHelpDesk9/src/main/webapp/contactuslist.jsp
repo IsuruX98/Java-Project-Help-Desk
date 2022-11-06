@@ -85,45 +85,61 @@
     <!-- header ends -->
     
     <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-    
-    <div class="uk-section uk-section-default">
-    <h1 class="uk-text-center uk-text-bolder">Contact Message List</h1>
+	
+	<div class="uk-section uk-section">
     <div class="uk-container uk-container-medium">
-    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
-    <thead>
-        <tr>
-            <th>User ID</th>
-            <th>User Name</th>
-            <th>User Email</th>
-            <th>Subject</th>
-            <th>Message</th>
-        </tr>
-    </thead>
-    
-    <tbody>
-    <!-- looping the user data using c tag library -->
+    <h1 class="uk-text-center uk-text-bolder">User Message List</h1>
+    <div class="uk-overflow-auto">
+    <table class="uk-table uk-table-hover uk-table-divider uk-table-striped">
+        <thead class="uk-background-secondary">
+            <tr>
+                <th class="uk-table-shrink"></th>
+                <th class="uk-table-expand">User Id</th>
+                <th class="uk-table-expand">User Name</th>
+                <th class="uk-table-expand">User Email</th>
+                <th class="uk-table-expand">Subject</th>
+                <th class="uk-table-expand">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<!-- looping the user data using c tag library -->
 	
-	<c:forEach var="msg" items="${contactUsList}">
+		<c:forEach var="msg" items="${clist}">
 	
-	<!-- storing the user data into variables -->
-	<c:set var="id" value="${msg.cid}"/>
-	<c:set var="name" value="${msg.cname}"/>
-	<c:set var="email" value="${msg.cemail}"/>
-	<c:set var="subject" value="${msg.csubject}"/>
-	<c:set var="message" value="${msg.cmessage}"/>
-        <tr>
-            <td>${msg.cid}</td>
-            <td>${msg.cname}</td>
-            <td>${msg.cemail}</td>
-            <td>${msg.csubject}</td>
-            <td>${msg.cmessage}</td>
-            
-        </tr>
-        </c:forEach>
-    </tbody>
-	</table>
+		<!-- storing the user data into variables -->
+		<c:set var="id" value="${msg.cid}"/>
+		<c:set var="name" value="${msg.cname}"/>
+		<c:set var="email" value="${msg.cemail}"/>
+		<c:set var="subject" value="${msg.csubject}"/>
+		<c:set var="message" value="${msg.cmessage}"/>
+        
+            <tr>
+                <td><input class="uk-checkbox" type="checkbox" aria-label="Checkbox"></td>
+                <td class="uk-table-link">
+                    <a class="uk-link-reset" href="">${msg.cid}</a>
+                </td>
+                <td class="uk-table-link">
+                    <a class="uk-link-reset" href="">${msg.cname}</a>
+                </td>
+                <td class="uk-table-link">
+                    <a class="uk-link-reset" href="">${msg.cemail}</a>
+                </td>
+                <td class="uk-table-link">
+                    <a class="uk-link-reset" href="">${msg.csubject}</a>
+                </td>
+                <td class="uk-table-link">
+                    <a class="uk-link-reset" href="">${msg.cmessage}</a>
+                </td>
+                
+            </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
     </div>
 	</div>
+	
+	
 
     <!-- responsive menu -->
 

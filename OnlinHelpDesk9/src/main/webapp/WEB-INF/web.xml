@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
-  <servlet>
-    <description></description>
-    <display-name>loginServlet</display-name>
-    <servlet-name>loginServlet</servlet-name>
-    <servlet-class>onlinehelpdesk.loginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>loginServlet</servlet-name>
-    <url-pattern>/loginServlet</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="5.0">
   <display-name>OnlinHelpDesk9</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -21,72 +11,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>regi</display-name>
-    <servlet-name>regi</servlet-name>
-    <servlet-class>onlinehelpdesk.regi</servlet-class>
+    <display-name>contactuslistServlet</display-name>
+    <servlet-name>contactuslistServlet</servlet-name>
+    <servlet-class>onlinehelpdesk.contactuslistServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>regi</servlet-name>
-    <url-pattern>/regi</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>deleteUserServlet</display-name>
-    <servlet-name>deleteUserServlet</servlet-name>
-    <servlet-class>onlinehelpdesk.deleteUserServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>deleteUserServlet</servlet-name>
-    <url-pattern>/deleteUserServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>updateUserServlet</display-name>
-    <servlet-name>updateUserServlet</servlet-name>
-    <servlet-class>onlinehelpdesk.updateUserServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>updateUserServlet</servlet-name>
-    <url-pattern>/updateUserServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>logoutServlet</display-name>
-    <servlet-name>logoutServlet</servlet-name>
-    <servlet-class>onlinehelpdesk.logoutServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>logoutServlet</servlet-name>
-    <url-pattern>/logoutServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>contactUsServlet</display-name>
-    <servlet-name>contactUsServlet</servlet-name>
-    <servlet-class>onlinehelpdesk.contactUsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>contactUsServlet</servlet-name>
-    <url-pattern>/contactUsServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>userListServlet</display-name>
-    <servlet-name>userListServlet</servlet-name>
-    <servlet-class>onlinehelpdesk.userListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>userListServlet</servlet-name>
-    <url-pattern>/userListServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>contactusList</display-name>
-    <servlet-name>contactusList</servlet-name>
-    <servlet-class>onlinehelpdesk.contactusList</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>contactusList</servlet-name>
-    <url-pattern>/contactusList</url-pattern>
+    <servlet-name>contactuslistServlet</servlet-name>
+    <url-pattern>/contactuslistServlet</url-pattern>
   </servlet-mapping>
 </web-app>
