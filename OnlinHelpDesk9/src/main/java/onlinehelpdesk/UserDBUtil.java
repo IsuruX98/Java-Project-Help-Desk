@@ -16,6 +16,7 @@ public class UserDBUtil {
 	private static PreparedStatement pst = null;
 	private static ResultSet rs = null;
 	static HashMap<String, String> user;
+	static ArrayList<String> list;
 	
 	//method for validating the user
 	public boolean validateUser(String uemail,String upw) {
@@ -67,40 +68,6 @@ public class UserDBUtil {
 			e.printStackTrace();
 		}
 		return isSuccess;
-	}
-	
-	//method to store details of user
-	public List<User> getUserDetails(String uemail,String upw){
-		
-		ArrayList<User> user = new ArrayList<>();
-		
-		try {
-			//making the database connection
-			con = DBConnect.getConnection();
-			
-			//create a statement and executing the query
-			pst = con.prepareStatement("select * from users where uemail = ? and upw = ?");
-			pst.setString(1, uemail);
-			pst.setString(2, upw);
-			
-			//passing the result to the result set object
-			rs = pst.executeQuery();
-			
-			if(rs.next()) {
-				int id = rs.getInt(1);
-				String name = rs.getString(2);
-				String email = rs.getString(3);
-				String mobile = rs.getString(4);
-				String pwd = rs.getString(5);
-				
-				User u = new User(id, name, email, mobile, pwd);
-				user.add(u);
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-		return user;
 	}
 	
 	//method for insert users
@@ -229,5 +196,39 @@ public class UserDBUtil {
         	return isSuccess;
         	
         }
+        
+      //method to store details of user
+    	public List<User> getUserDetails(){
+    		
+    		ArrayList<User> user = new ArrayList<>();
+    		
+    		try {
+    			//making the database connection
+    			con = DBConnect.getConnection();
+    			
+    			//create a statement and executing the query
+    			pst = con.prepareStatement("select * from users");
+    			
+    			
+    			//passing the result to the result set object
+    			rs = pst.executeQuery();
+    			
+    			while(rs.next()) {
+    				int id = rs.getInt(1);
+    				String name = rs.getString(2);
+    				String email = rs.getString(3);
+    				String mobile = rs.getString(4);
+    				String pwd = rs.getString(5);
+    				
+    				User u = new User(id, name, email, mobile, pwd);
+    				user.add(u);
+    				
+    			}
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}	
+    		return user;
+    	}
+       
 	
 }

@@ -59,11 +59,17 @@
                   <li><a href="#">menu 04</a></li>
                   <li>
                     <div class="uk-navbar-item">
-                      <a
-                        class="uk-button uk-button-small uk-text-bold"
-                        href="login.html"
-                        >Login</a
-                      >
+                      <%
+					if(session.getAttribute("name")==null){
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
+					}else{
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
+						%>
+						<%= session.getAttribute("name")%>
+						 <%
+						out.print("</a>");
+					}
+					%>
                     </div>
                   </li>
                 </ul>
@@ -91,7 +97,7 @@
           <h1 class="uk-text-center uk-margin-remove-top uk-text-bolder">
             Welcome to Admin
           </h1>
-          <h3 class="uk-text-center uk-margin-remove-top">admin name</h3>
+          <h3 class="uk-text-center uk-margin-remove-top"><%= session.getAttribute("name")%></h3>
         </div>
       </div>
     </header>
@@ -108,7 +114,7 @@
             <div
               class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
             >
-              <a class="uk-position-cover" href="category.html"></a>Expand
+              <a class="uk-position-cover" href="userlist"></a>View User List
             </div>
           </div>
           <div class="uk-width-expand@m">

@@ -2,15 +2,14 @@
     pageEncoding="ISO-8859-1"%>
     
 <!-- importing the tag library connection -->
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-    
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Update User</title>
+    <title>User List</title>
 
     <!-- UIkit CSS -->
     <link
@@ -24,11 +23,9 @@
   </head>
 
   <body>
-	
-	
   
-  <!-- to catch the servlet status msg -->
-	<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+  <!-- status from util class -->
+  <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
   
     <!-- header -->
 
@@ -86,134 +83,45 @@
     </header>
 
     <!-- header ends -->
-
-    <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
-      <div>
-        <div class="uk-card">
-          <div class="uk-container uk-container-large uk-padding-large">
-            <article
-              class="uk-article uk-margin-large"
-              data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
-            >
-              <h1 class="uk-text-center uk-text-bolder">Upadte Profile</h1>
-              <div class="uk-article-content">
-                <form
-                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom" action="update" method="post"
-                >
-                <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >User ID</label
-                    >
-                    <div class="uk-form-controls">
-                    <!-- if you want to display a java variable into html tag use below notation -->
-                      <input
-                        id="id"
-                        class="uk-input uk-border-rounded"
-                        name="id"
-                        type="text"
-                        value="<%= session.getAttribute("id")%>"
-                        readonly="readonly"
-                        
-                      />
-                    </div>
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >Name</label
-                    >
-                    <div class="uk-form-controls">
-                      <input
-                        id="uname"
-                        class="uk-input uk-border-rounded"
-                        name="uname"
-                        type="text"
-                        value="<%= session.getAttribute("name")%>"
-                        
-                      />
-                    </div>
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >E-mail</label
-                    >
-                    <div class="uk-form-controls">
-                      <input
-                        id="uemail"
-                        class="uk-input uk-border-rounded"
-                        name="uemail"
-                        type="email"
-                        value="<%= session.getAttribute("email")%>"
-                        
-                      />
-                    </div>
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >Mobile Number</label
-                    >
-                    <div class="uk-form-controls">
-                      <input
-                        id="umobile"
-                        class="uk-input uk-border-rounded"
-                        name="umobile"
-                        type="text"
-                        value="<%= session.getAttribute("mobile")%>"
-                        
-                      />
-                    </div>
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="_replyto"
-                      >Password</label
-                    >
-                    <div class="uk-form-controls">
-                      <input
-                        id="upw"
-                        class="uk-input uk-border-rounded"
-                        name="upw"
-                        type="password"
-                        value="<%= session.getAttribute("pw")%>"
-                        
-                      />
-                    </div>
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="_replyto"
-                      >Repeat Password</label
-                    >
-                    <div class="uk-form-controls">
-                      <input
-                        id="rupw"
-                        class="uk-input uk-border-rounded"
-                        name="rupw"
-                        type="password"
-                        value="<%= session.getAttribute("pw")%>"
-                        
-                      />
-                    </div>
-                  </div>
-                  <br />
-                  <div class="uk-text-center">
-                    <input
-                      class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                      type="submit"
-                      value="Update Profile"
-                    />
-                  </div>
-                </form>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="uk-card uk-background-default uk-hidden\@l">
-          <div class="uk-position-center uk-position-relative">
-            <img width="650px" src="img/update.jpg" alt="" />
-          </div>
-        </div>
-      </div>
+    
+    <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+    
+    <div class="uk-section uk-section-default">
+    <h1 class="uk-text-center uk-text-bolder">User List</h1>
+    <div class="uk-container uk-container-medium">
+    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>User Mobile</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    <!-- looping the user data using c tag library -->
+	
+	<c:forEach var="user" items="${userdetails}">
+	
+	<!-- storing the user data into variables -->
+	<c:set var="id" value="${user.id}"/>
+	<c:set var="name" value="${user.uname}"/>
+	<c:set var="email" value="${user.uemail}"/>
+	<c:set var="mobile" value="${user.umobile}"/>
+	<c:set var="pw" value="${user.upw}"/>
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.uname}</td>
+            <td>${user.uemail}</td>
+            <td>${user.umobile}</td>
+            
+        </tr>
+        </c:forEach>
+    </tbody>
+	</table>
     </div>
+	</div>
 
     <!-- responsive menu -->
 
@@ -224,7 +132,7 @@
         <ul
           class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-          <li><a href="#">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#">menu 01</a></li>
           <li><a href="#">menu 02</a></li>
           <li><a href="#">menu 03</a></li>
@@ -329,18 +237,21 @@
     <!-- JS alert for registration is done -->
 	
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
-	
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+	 
 	<script type="text/javascript">
 	
 	var status = document.getElementById("status").value;
-	if (status == "pwdmissmatch") {
-		swal("Sorry","password miss match","error");
-	}if (status == "pwlengthshort") {
-		swal("Sorry","password length must be 8 or higher","error");
-	}if (status == "fieldmissing") {
-		swal("Sorry","every field must filled","error");
+	if (status == "failed") {
+		swal("Sorry","wrong username or password","error");
+	}else if (status == "invalidemail") {
+		swal("Sorry","Please Enter Username","error");
+	}else if (status == "invalidupwd") {
+		swal("Sorry","Please Enter Password","error");
+	}else if (status == "updatedone") {
+		swal("Done","profile updated successfully please relogin","success");
 	}
 	</script>
+    
   </body>
 </html>

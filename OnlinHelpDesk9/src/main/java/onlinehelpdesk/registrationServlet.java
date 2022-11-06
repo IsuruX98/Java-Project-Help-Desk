@@ -25,11 +25,20 @@ public class registrationServlet extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		
 		//validations
-		if (upw != rpwd) {
+		if (!upw.equals(rpwd)) {
 			request.setAttribute("status", "pwdmissmatch");
 			dispatcher = request.getRequestDispatcher("register.jsp");
 			dispatcher.forward(request, response);
-		}else {
+		}if (upw.length() < 8) {
+			request.setAttribute("status", "pwlengthshort");
+			dispatcher = request.getRequestDispatcher("register.jsp");
+			dispatcher.forward(request, response);
+		}if ((uname.equals("")||uname.equals(null))||(uemail.equals("")||uemail.equals(null))||(umobile.equals("")||umobile.equals(null))||(upw.equals("")||upw.equals(null))) {
+			request.setAttribute("status", "fieldmissing");
+			dispatcher = request.getRequestDispatcher("register.jsp");
+			dispatcher.forward(request, response);
+		}
+		else {
 		
 		boolean isTrue;
 		

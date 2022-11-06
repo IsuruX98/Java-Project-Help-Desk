@@ -49,16 +49,24 @@ public class loginServlet extends HttpServlet {
 				
 				//passing the return value of the method
 		        isTrue = o.validateUser(uemail, upw);
-		        
-		        //storing user data
-		      	userDetails = o.getUserDetails(uemail, upw);
 		      	
 		      	
 				if (UserDBUtil.userCheck == true) {
 					
 					//creating the session
-					session.setAttribute("name", "user");
-					request.setAttribute("userDetails", userDetails);
+					
+					int id = Integer.parseInt(UserDBUtil.user.get("id"));
+					String name = UserDBUtil.user.get("name");
+					String email = UserDBUtil.user.get("email");
+					String mobile = UserDBUtil.user.get("mobile");
+					String pw = UserDBUtil.user.get("pw");
+					
+					session.setAttribute("id", id);
+					session.setAttribute("name", name);
+					session.setAttribute("email", email);
+					session.setAttribute("mobile", mobile);
+					session.setAttribute("pw", pw);
+					
 					request.setAttribute("status", "pass");
 					//redirect to another page
 					dis = request.getRequestDispatcher("adminHome.jsp");
@@ -79,7 +87,6 @@ public class loginServlet extends HttpServlet {
 					session.setAttribute("mobile", mobile);
 					session.setAttribute("pw", pw);
 					
-					request.setAttribute("userDetails", userDetails);
 					request.setAttribute("status", "pass");
 					//redirect to another page
 					dis = request.getRequestDispatcher("index.jsp");

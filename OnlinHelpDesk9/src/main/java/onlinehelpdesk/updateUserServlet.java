@@ -19,12 +19,28 @@ public class updateUserServlet extends HttpServlet {
 		String email = request.getParameter("uemail");
 		String mobile = request.getParameter("umobile");
 		String upw = request.getParameter("upw");
+		String rupw = request.getParameter("rupw");
 		
 		
 		
 		//for redirect after adding the data to the table
 		RequestDispatcher dispatcher = null;
 		
+		//validations
+				if (!upw.equals(rupw)) {
+					request.setAttribute("status", "pwdmissmatch");
+					dispatcher = request.getRequestDispatcher("updateuser.jsp");
+					dispatcher.forward(request, response);
+				}if (upw.length() < 8) {
+					request.setAttribute("status", "pwlengthshort");
+					dispatcher = request.getRequestDispatcher("updateuser.jsp");
+					dispatcher.forward(request, response);
+				}if ((name.equals("")||name.equals(null))||(email.equals("")||email.equals(null))||(mobile.equals("")||mobile.equals(null))||(upw.equals("")||upw.equals(null))) {
+					request.setAttribute("status", "fieldmissing");
+					dispatcher = request.getRequestDispatcher("updateuser.jsp");
+					dispatcher.forward(request, response);
+				}
+				else {
 		
 		
 		boolean isTrue;
@@ -45,7 +61,7 @@ public class updateUserServlet extends HttpServlet {
 		}
 		dispatcher.forward(request, response);
 		
-		
+				}
 	  
 
    }

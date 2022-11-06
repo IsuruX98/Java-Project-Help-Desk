@@ -108,7 +108,7 @@
                         class="uk-input uk-border-rounded"
                         name="uname"
                         type="text"
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -122,7 +122,7 @@
                         class="uk-input uk-border-rounded"
                         name="uemail"
                         type="email"
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -136,7 +136,7 @@
                         class="uk-input uk-border-rounded"
                         name="umobile"
                         type="text"
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -150,7 +150,7 @@
                         class="uk-input uk-border-rounded"
                         name="upw"
                         type="password"
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -164,7 +164,7 @@
                         class="uk-input uk-border-rounded"
                         name="rpwd"
                         type="password"
-                        required=""
+                        
                       />
                     </div>
                   </div>
@@ -321,7 +321,12 @@
 		swal("Done","account Deleted successfully","success");
 	}if (status == "pwdmissmatch") {
 		swal("Sorry","password miss match","error");
+	}if (status == "pwlengthshort") {
+		swal("Sorry","password length must be 8 or higher","error");
+	}if (status == "fieldmissing") {
+		swal("Sorry","every field must filled","error");
 	}
+	
 	</script>
   </body>
 </html>
