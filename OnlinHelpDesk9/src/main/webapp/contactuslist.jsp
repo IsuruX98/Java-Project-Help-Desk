@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<!-- importing the tag library connection -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Help Desk</title>
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Contact Us List</title>
 
     <!-- UIkit CSS -->
     <link
@@ -18,14 +17,16 @@
       href="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/css/uikit.min.css"
     />
 
-    <!-- <script src="js/uikit.js"></script> -->
-
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/js/uikit-icons.min.js"></script>
   </head>
 
   <body>
+  
+  <!-- status from util class -->
+  <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+  
     <!-- header -->
 
     <header>
@@ -39,37 +40,31 @@
               <div class="uk-navbar-left">
                 <a
                   class="uk-navbar-item uk-logo uk-visible@m uk-text-muted uk-text-bold uk-text-bolder"
-                  href="adminHome.jsp"
-                  >Help Desk Admin</a
+                  href="index.jsp"
+                  >Help Desk</a
                 >
               </div>
               <div class="uk-navbar-center uk-hidden@m">
                 <a
                   class="uk-navbar-item uk-logo uk-text-muted uk-text-bold"
-                  href="adminHome.jsp"
-                  >Help Desk Admin</a
+                  href="index.jsp"
+                  >Help Desk</a
                 >
               </div>
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
-                  <li><a href="adminHome.jsp">Home</a></li>
+                  <li><a href="index.jsp">Home</a></li>
                   <li><a href="#">menu 01</a></li>
                   <li><a href="#">menu 02</a></li>
                   <li><a href="#">menu 03</a></li>
                   <li><a href="#">menu 04</a></li>
                   <li>
                     <div class="uk-navbar-item">
-                      <%
-					if(session.getAttribute("name")==null){
-						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
-					}else{
-						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
-						%>
-						<%= session.getAttribute("name")%>
-						 <%
-						out.print("</a>");
-					}
-					%>
+                      <a
+                        class="uk-button uk-button-small uk-text-bold"
+                        href="login.jsp"
+                        >Login</a
+                      >
                     </div>
                   </li>
                 </ul>
@@ -85,93 +80,61 @@
           </div>
         </nav>
       </div>
-
-      <div
-        class="uk-section-large uk-position-relative uk-position-z-index uk-background-fixed uk-light"
-        style="background-image: url(img/home.jpg)"
-      >
-        <div
-          class="uk-container"
-          data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
-        >
-          <h1 class="uk-text-center uk-margin-remove-top uk-text-bolder">
-            Welcome to Admin
-          </h1>
-          <h3 class="uk-text-center uk-margin-remove-top"><%= session.getAttribute("name")%></h3>
-        </div>
-      </div>
     </header>
 
     <!-- header ends -->
-
-    <div class="uk-section uk-section-muted">
-      <div
-        class="uk-container"
-        data-uk-scrollspy="cls: uk-animation-scale-up; repeat: true"
-      >
-        <div class="uk-text-center" uk-grid>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="userlist"></a>View User List
-            </div>
-          </div>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="contactus"></a>View User Message List
-            </div>
-          </div>
-        </div>
-
-        <div class="uk-text-center" uk-grid>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="category.html"></a>Expand
-            </div>
-          </div>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="category.html"></a>Expand
-            </div>
-          </div>
-        </div>
-
-        <div class="uk-text-center" uk-grid>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="category.html"></a>Expand
-            </div>
-          </div>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="category.html"></a>Expand
-            </div>
-          </div>
-        </div>
-      </div>
+    
+    <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+    
+    <div class="uk-section uk-section-default">
+    <h1 class="uk-text-center uk-text-bolder">Contact Message List</h1>
+    <div class="uk-container uk-container-medium">
+    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    <!-- looping the user data using c tag library -->
+	
+	<c:forEach var="msg" items="${contactUsList}">
+	
+	<!-- storing the user data into variables -->
+	<c:set var="id" value="${msg.cid}"/>
+	<c:set var="name" value="${msg.cname}"/>
+	<c:set var="email" value="${msg.cemail}"/>
+	<c:set var="subject" value="${msg.csubject}"/>
+	<c:set var="message" value="${msg.cmessage}"/>
+        <tr>
+            <td>${msg.cid}</td>
+            <td>${msg.cname}</td>
+            <td>${msg.cemail}</td>
+            <td>${msg.csubject}</td>
+            <td>${msg.cmessage}</td>
+            
+        </tr>
+        </c:forEach>
+    </tbody>
+	</table>
     </div>
+	</div>
 
     <!-- responsive menu -->
 
     <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
       <div class="uk-offcanvas-bar">
-        <a class="uk-logo" href="adminHome.html">Help Desk Admin</a>
+        <a class="uk-logo" href="index.html">Help Desk</a>
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
         <ul
           class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-          <li><a href="adminHome.html">Admin Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#">menu 01</a></li>
           <li><a href="#">menu 02</a></li>
           <li><a href="#">menu 03</a></li>
@@ -272,5 +235,25 @@
     </footer>
 
     <!-- footer ends -->
+    
+    <!-- JS alert for registration is done -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+	 
+	<script type="text/javascript">
+	
+	var status = document.getElementById("status").value;
+	if (status == "failed") {
+		swal("Sorry","wrong username or password","error");
+	}else if (status == "invalidemail") {
+		swal("Sorry","Please Enter Username","error");
+	}else if (status == "invalidupwd") {
+		swal("Sorry","Please Enter Password","error");
+	}else if (status == "updatedone") {
+		swal("Done","profile updated successfully please relogin","success");
+	}
+	</script>
+    
   </body>
 </html>

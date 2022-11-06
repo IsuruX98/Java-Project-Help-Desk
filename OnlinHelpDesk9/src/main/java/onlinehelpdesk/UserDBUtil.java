@@ -197,7 +197,7 @@ public class UserDBUtil {
         	
         }
         
-      //method to store details of user
+      //method to det a list of users
     	public List<User> getUserDetails(){
     		
     		ArrayList<User> user = new ArrayList<>();
@@ -228,6 +228,39 @@ public class UserDBUtil {
     			e.printStackTrace();
     		}	
     		return user;
+    	}
+    	
+    	//method to get a list of contact us
+    	public List<ContactUs> getcontactUsdetails(){
+    		
+    		ArrayList<ContactUs> contactUsList = new ArrayList<>();
+    		
+    		try {
+    			//making the database connection
+    			con = DBConnect.getConnection();
+    			
+    			//create a statement and executing the query
+    			pst = con.prepareStatement("select * from contactus order by id desc");
+    			
+    			
+    			//passing the result to the result set object
+    			rs = pst.executeQuery();
+    			
+    			while(rs.next()) {
+    				int cid = rs.getInt(1);
+    				String cname = rs.getString(2);
+    				String cemail = rs.getString(3);
+    				String csubject = rs.getString(4);
+    				String cmessage = rs.getString(5);
+    				
+    				ContactUs c = new ContactUs(cid, cname, cemail, csubject, cmessage);
+    				contactUsList.add(c);
+    				
+    			}
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}	
+    		return contactUsList;
     	}
        
 	

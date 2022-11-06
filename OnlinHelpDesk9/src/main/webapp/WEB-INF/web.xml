@@ -79,4 +79,14 @@
     <servlet-name>userListServlet</servlet-name>
     <url-pattern>/userListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>contactusList</display-name>
+    <servlet-name>contactusList</servlet-name>
+    <servlet-class>onlinehelpdesk.contactusList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>contactusList</servlet-name>
+    <url-pattern>/contactusList</url-pattern>
+  </servlet-mapping>
 </web-app>
