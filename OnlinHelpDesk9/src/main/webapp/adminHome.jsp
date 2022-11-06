@@ -104,7 +104,7 @@
 
     <!-- header ends -->
 
-    <div class="uk-section uk-position-relative uk-position-z-index uk-background-fixed uk-light" style="background-image: url(img/home.jpg)">
+    <div class="uk-section">
     
         
       <div
