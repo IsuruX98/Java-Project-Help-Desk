@@ -1,20 +1,14 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <!-- importing the tag library connection -->
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-if(session.getAttribute("name")==null){
-	response.sendRedirect("login.jsp");
-}
-%>    
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
   <head>
+	
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>User Profile</title>
+    <title>Login</title>
 
     <!-- UIkit CSS -->
     <link
@@ -28,7 +22,24 @@ if(session.getAttribute("name")==null){
   </head>
 
   <body>
-  <header>
+
+    <!--Java JSTL Coding part-->
+
+    <%
+		String tid = request.getParameter("tid");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String id = request.getParameter("id");
+		String contact = request.getParameter("contact");
+		String subject = request.getParameter("subject");
+		String description = request.getParameter("description");
+				
+		%>
+
+
+    <!-- header -->
+
+    <header>
       <div
         class="uk-background-secondary"
         uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
@@ -39,20 +50,20 @@ if(session.getAttribute("name")==null){
               <div class="uk-navbar-left">
                 <a
                   class="uk-navbar-item uk-logo uk-visible@m uk-text-muted uk-text-bold uk-text-bolder"
-                  href="index.jsp"
+                  href="index.html"
                   >Help Desk</a
                 >
               </div>
               <div class="uk-navbar-center uk-hidden@m">
                 <a
                   class="uk-navbar-item uk-logo uk-text-muted uk-text-bold"
-                  href="index.jsp"
+                  href="index.html"
                   >Help Desk</a
                 >
               </div>
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
-                  <li><a href="index.jsp">Home</a></li>
+                  <li><a href="index.html">Home</a></li>
                   <li><a href="#">menu 01</a></li>
                   <li><a href="#">menu 02</a></li>
                   <li><a href="#">menu 03</a></li>
@@ -61,7 +72,7 @@ if(session.getAttribute("name")==null){
                     <div class="uk-navbar-item">
                       <a
                         class="uk-button uk-button-small uk-text-bold"
-                        href="login.jsp"
+                        href="contact.html"
                         >Login</a
                       >
                     </div>
@@ -80,8 +91,10 @@ if(session.getAttribute("name")==null){
         </nav>
       </div>
     </header>
+
     <!-- header ends -->
-	
+    <input type="hidden" id="deleteticket" value="<%= request.getAttribute("deleteticket")%>">
+
     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
       <div>
         <div class="uk-card">
@@ -90,130 +103,171 @@ if(session.getAttribute("name")==null){
               class="uk-article uk-margin-large"
               data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
             >
-              <h1 class="uk-text-center uk-text-bolder">User Profile</h1>
+              <h1 class="uk-text-center uk-text-bolder">Delete Ticket</h1>
               <div class="uk-article-content">
-                <div class="uk-margin-medium-top uk-margin-medium-bottom">
-                
-                <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-	
-	
-	<!-- looping the user data using c tag library -->
-				<table class="uk-table uk-table-divider uk-table-hover">
-                    <tr>
-                      <td class="uk-text-bold">User ID :</td>
-                      <td><%= session.getAttribute("id")%></td>
-                    </tr>
-                    <tr>
-                      <td class="uk-text-bold">Name :</td>
-                      <td><%= session.getAttribute("name")%></td>
-                    </tr>
-                    <tr>
-                      <td class="uk-text-bold">E-mail :</td>
-                      <td><%= session.getAttribute("email")%></td>
-                    </tr>
-                    <tr>
-                      <td class="uk-text-bold">Mobile No :</td>
-                      <td><%= session.getAttribute("mobile")%></td>
-                    </tr>
-                  </table>
-
-                  <br />
-                 
-
+                <form action = 'y_delete' method = 'post'
+                  class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom"
+                >
                   <div class="uk-margin-bottom">
-                    <div class="uk-text-center">
-                    <form action="y_view" method="post">
-                    <input type="hidden" name="id" value="<%= session.getAttribute("id")%>">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >Ticket ID </label
+                    >
+                    <div class="uk-form-controls">
                       <input
-                        class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                        type="submit"
-                        value="my tickets"
+                        id="tid"
+                        value= '<%= tid%>' readonly
+                        class="uk-input uk-border-rounded"
+                        name="tid"
+                        type="text"
+                        placeholder="Yasiru Deshan"
+                        required=""
                       />
-                      </form>
                     </div>
                   </div>
-                  
-            <!-- storing the data into a link that need to pass to another page and storing them in to a single variable -->
-			
-			
 
-				   <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-                      
-                      <!-- passing the variable that stored data and the link in the above to the below anchor, so that when we click that button it will redirect us to another page with the data  -->
-						<a href="updateuser.jsp">
-						
-                         <input class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                          type="button" name="update" value="update my data"/>
-                        
-						</a>
-						
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >Name </label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="name"
+                        value= '<%= name%>' readonly
+                        class="uk-input uk-border-rounded"
+                        name="name"
+                        type="text"
+                        placeholder="Yasiru Deshan"
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+
+                    <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >E-mail </label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="email"
+                        value='<%= email%>' readonly
+                        class="uk-input uk-border-rounded"
+                        name="email"
+                        type="text"
+                        placeholder="example@gmail.com"
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >User ID </label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="id"
+                        value='<%= id%>' readonly
+                        class="uk-input uk-border-rounded"
+                        name="id"
+                        type="text"
+                        placeholder="1023"
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >Contact Number </label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="contact"
+                        value='<%= contact%>' readonly
+                        class="uk-input uk-border-rounded"
+                        name="contact"
+                        type="text"
+                        placeholder="+94788095559"
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >Subject </label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="subject"
+                        value='<%= subject%>' readonly
+                        class="uk-input uk-border-rounded"
+                        name="subject"
+                        type="text"
+                        placeholder="Final Exam Issue"
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="uk-margin-bottom">
+                    
+                    <div class="uk-form-controls">
+                      <div class="uk-margin-bottom">
+                        <label class="uk-form-label" for="message">Description</label>
+                        <div class="uk-form-controls">
+                          <textarea
+                            id="description" readonly
+                            class="uk-textarea uk-border-rounded"
+                            name="description"
+                            rows="5"
+                            minlength="10"
+                            required=""
+                            placeholder="enter your message here..."
+                          ><%= description%></textarea>
+                        </div>
                       </div>
                     </div>
-	
-	
-
-                  <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-                   
-					<a class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" href="logout">Logout</a> 
                   </div>
-                    </div>
 
-                  
-                    
-                      
-                      
+                  <br />
 
-                  
-                  <!-- to delete data  -->
-                  
-				<form action="delete" method="post" onsubmit="submitForm();">
-				
-				<div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-				
-				<input type="hidden" name="deletedataid" value="<%= session.getAttribute("id")%>">
-	
-				<input class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" type="submit" name="submit" value="delete my data">
-				
-				</div>
-                </div>
-				</form>
-                  
-                </div>
+                  <div class="uk-text-center">
+                    <input
+                      class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
+                      type="submit"
+                      value="Delete"
+                    />
+                  </div>
+                </form>
               </div>
             </article>
           </div>
         </div>
       </div>
-     
-
       <div>
         <div class="uk-card uk-background-default">
           <div class="uk-position-center uk-position-relative">
-            <img
-              width="500px"
-              src="img/userProfile.jpg"
-              alt=""
-            />
+            <img width="550px" src="/Help Desk//src/img/login.jpg" alt="" />
           </div>
         </div>
       </div>
     </div>
 
+    <!-- responsive menu -->
 
-	
-	<!-- responsive menu -->
 
-    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+<div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
       <div class="uk-offcanvas-bar">
         <a class="uk-logo" href="index.html">Help Desk</a>
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
         <ul
           class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-          <li><a href="index.jsp">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#">menu 01</a></li>
           <li><a href="#">menu 02</a></li>
           <li><a href="#">menu 03</a></li>
@@ -314,34 +368,16 @@ if(session.getAttribute("name")==null){
     </footer>
 
     <!-- footer ends -->
-
-<!-- JS alert for delete is fail -->
-	
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+	 
 	<script type="text/javascript">
 	
-	var status = document.getElementById("status").value;
-
-		function submitForm(){
-			Swal.fire({
-				  title: 'Are you sure?',
-				  text: "You won't be able to revert this!",
-				  icon: 'warning',
-				  showCancelButton: true,
-				  confirmButtonColor: '#3085d6',
-				  cancelButtonColor: '#d33',
-				  confirmButtonText: 'Yes, delete it!'
-				}).then((result) => {
-				  if (result.isConfirmed) {
-				    Swal.fire(
-				      'Deleted!',
-				      'Your file has been deleted.',
-				      'success'
-				    )
-				  }
-				})
-		}
-	</script>	
-</body>
+	
+	var deleteticket = document.getElementById("deleteticket").value;
+	if (status == "notdeleted") {
+		swal("Sorry","your ticket is not deleted.","error");
+	}
+	</script>
+  </body>
 </html>

@@ -33,6 +33,8 @@
     <!-- header -->
     <!-- status from util class -->
   <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+   <input type="hidden" id="ticket" value="<%= request.getAttribute("ticket")%>">
+   <input type="hidden" id="deleteticket" value="<%= request.getAttribute("deleteticket")%>">
 
     <header>
       <div
@@ -277,8 +279,8 @@
           class="uk-margin-medium-top uk-text-center"
           data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
         >
-          <a class="uk-button uk-button-primary uk-border-rounded" href="#"
-            >Submit</a
+          <a class="uk-button uk-button-primary uk-border-rounded" href="addticket.jsp"
+            >Submit a Ticket</a
           >
         </div>
       </div>
@@ -501,6 +503,14 @@
 	var status = document.getElementById("status").value;
 	if (status == "contactusdone") {
 		swal("Success","we will contact you via e-mail","success");
+	}
+	var ticket = document.getElementById("ticket").value;
+	if (status == "ticketadded") {
+		swal("Success","your ticket has been submitted successfully.","success");
+	}
+	var deleteticket = document.getElementById("deleteticket").value;
+	if (status == "deleted") {
+		swal("Success","your ticket has been deleted successfully.","success");
 	}
 	</script>
   </body>
