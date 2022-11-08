@@ -92,29 +92,25 @@
 	
 	
 	<!-- looping the user data using c tag library -->
-	
-	
+				<table class="uk-table uk-table-divider uk-table-hover">
+                    <tr>
+                      <td class="uk-text-bold">User ID :</td>
+                      <td><%= session.getAttribute("id")%></td>
+                    </tr>
+                    <tr>
+                      <td class="uk-text-bold">Name :</td>
+                      <td><%= session.getAttribute("name")%></td>
+                    </tr>
+                    <tr>
+                      <td class="uk-text-bold">E-mail :</td>
+                      <td><%= session.getAttribute("email")%></td>
+                    </tr>
+                    <tr>
+                      <td class="uk-text-bold">Mobile No :</td>
+                      <td><%= session.getAttribute("mobile")%></td>
+                    </tr>
+                  </table>
 
-                <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >User ID : <%= session.getAttribute("id")%></label
-                    >
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >Name : <%= session.getAttribute("name")%> </label
-                    >
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >E-mail : <%= session.getAttribute("email")%></label
-                    >
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >Mobile Number : <%= session.getAttribute("mobile")%></label
-                    >
-                  </div>
                   <br />
                  
 
