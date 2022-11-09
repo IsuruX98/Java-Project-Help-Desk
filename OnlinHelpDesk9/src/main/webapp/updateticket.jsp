@@ -25,6 +25,7 @@
 
     <%
 		String tid = request.getParameter("tid");
+    	String date = request.getParameter("date");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String id = request.getParameter("id");
@@ -121,6 +122,25 @@
                       />
                     </div>
                   </div>
+                  
+                 
+                 <div class="uk-margin-bottom">
+                    <label class="uk-form-label uk-text-left" for="name"
+                      >Submitted Date </label
+                    >
+                    <div class="uk-form-controls">
+                      <input
+                        id="date" readonly
+                        value= '<%= date%>'
+                        class="uk-input uk-border-rounded"
+                        name="date"
+                        type="text"
+                        placeholder=""
+                        required=""
+                      />
+                    </div>
+                  </div> 
+                  
 
                   <div class="uk-margin-bottom">
                     <label class="uk-form-label uk-text-left" for="name"
@@ -129,7 +149,7 @@
                     <div class="uk-form-controls">
                       <input
                         id="name"
-                        value= '<%= name%>'
+                        value= '<%= name%>' readonly
                         class="uk-input uk-border-rounded"
                         name="name"
                         type="text"
@@ -138,6 +158,8 @@
                       />
                     </div>
                   </div>
+                  
+                  
 
 
                     <div class="uk-margin-bottom">
@@ -147,7 +169,7 @@
                     <div class="uk-form-controls">
                       <input
                         id="email"
-                        value='<%= email%>'
+                        value='<%= email%>' readonly
                         class="uk-input uk-border-rounded"
                         name="email"
                         type="text"
@@ -165,7 +187,7 @@
                     <div class="uk-form-controls">
                       <input
                         id="id"
-                        value='<%= id%>'
+                        value='<%= id%>' readonly
                         class="uk-input uk-border-rounded"
                         name="id"
                         type="text"
@@ -183,7 +205,7 @@
                     <div class="uk-form-controls">
                       <input
                         id="contact"
-                        value='<%= contact%>'
+                        value='<%= contact%>' readonly
                         class="uk-input uk-border-rounded"
                         name="contact"
                         type="text"

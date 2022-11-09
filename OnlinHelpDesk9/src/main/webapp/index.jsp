@@ -495,9 +495,11 @@
     </footer>
 
     <!-- footer ends -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
-	 
+    <!-- JS alert for registration is done -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+	
 	<script type="text/javascript">
 	
 	var status = document.getElementById("status").value;
@@ -505,13 +507,15 @@
 		swal("Success","we will contact you via e-mail","success");
 	}
 	var ticket = document.getElementById("ticket").value;
-	if (status == "ticketadded") {
+	if (ticket == "ticketadded") {
 		swal("Success","your ticket has been submitted successfully.","success");
 	}
 	var deleteticket = document.getElementById("deleteticket").value;
-	if (status == "deleted") {
+	if (deleteticket == "deleted") {
 		swal("Success","your ticket has been deleted successfully.","success");
 	}
+	
 	</script>
+    
   </body>
 </html>

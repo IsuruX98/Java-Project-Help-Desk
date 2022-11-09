@@ -14,7 +14,6 @@ import java.util.List;
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    static List<User> userDetails;    
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -66,6 +65,7 @@ public class loginServlet extends HttpServlet {
 					session.setAttribute("email", email);
 					session.setAttribute("mobile", mobile);
 					session.setAttribute("pw", pw);
+					
 					
 					request.setAttribute("status", "pass");
 					//redirect to another page

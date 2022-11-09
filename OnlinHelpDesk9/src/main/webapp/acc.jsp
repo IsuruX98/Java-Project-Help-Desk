@@ -95,6 +95,7 @@ if(session.getAttribute("name")==null){
                 <div class="uk-margin-medium-top uk-margin-medium-bottom">
                 
                 <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+                <input type="hidden" id="deleteticket" value="<%= request.getAttribute("deleteticket")%>">
 	
 	
 	<!-- looping the user data using c tag library -->
@@ -133,14 +134,13 @@ if(session.getAttribute("name")==null){
                     </div>
                   </div>
                   
-            <!-- storing the data into a link that need to pass to another page and storing them in to a single variable -->
-			
-			
+              <!-- storing the data into a link that need to pass to another page and storing them in to a single variable -->
 
 				   <div class="uk-margin-bottom">
                       <div class="uk-text-center">
                       
                       <!-- passing the variable that stored data and the link in the above to the below anchor, so that when we click that button it will redirect us to another page with the data  -->
+						
 						<a href="updateuser.jsp">
 						
                          <input class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
@@ -151,7 +151,7 @@ if(session.getAttribute("name")==null){
                       </div>
                     </div>
 	
-	
+				 <!-- logout  -->
 
                   <div class="uk-margin-bottom">
                       <div class="uk-text-center">
@@ -159,27 +159,16 @@ if(session.getAttribute("name")==null){
 					<a class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" href="logout">Logout</a> 
                   </div>
                     </div>
-
-                  
-                    
-                      
-                      
-
-                  
+            
                   <!-- to delete data  -->
                   
-				<form action="delete" method="post" onsubmit="submitForm();">
-				
 				<div class="uk-margin-bottom">
                       <div class="uk-text-center">
-				
-				<input type="hidden" name="deletedataid" value="<%= session.getAttribute("id")%>">
-	
-				<input class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" type="submit" name="submit" value="delete my data">
-				
+				<a href="deleteaccconfirm.jsp">
+				<input class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" type="button" value="delete my data"">
+				</a>
 				</div>
                 </div>
-				</form>
                   
                 </div>
               </div>
@@ -321,27 +310,24 @@ if(session.getAttribute("name")==null){
 	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
 	<script type="text/javascript">
 	
-	var status = document.getElementById("status").value;
-
-		function submitForm(){
-			Swal.fire({
-				  title: 'Are you sure?',
-				  text: "You won't be able to revert this!",
-				  icon: 'warning',
-				  showCancelButton: true,
-				  confirmButtonColor: '#3085d6',
-				  cancelButtonColor: '#d33',
-				  confirmButtonText: 'Yes, delete it!'
-				}).then((result) => {
-				  if (result.isConfirmed) {
-				    Swal.fire(
-				      'Deleted!',
-				      'Your file has been deleted.',
-				      'success'
-				    )
-				  }
-				})
+	var deleteticket = document.getElementById("deleteticket").value;
+	
+	if (deleteticket == "deleted") {
+		swal("Success","your ticket has been deleted successfully.","success");
+	}
+	
+	function myFunction() {
+		if (confirm("Do you want to delete?") == true) {
+			document.getElementById("myForm").submit();
+	    
+	} else {
+	    confirm()
+	}
+		  
+		  
 		}
+	
+	
 	</script>	
 </body>
 </html>

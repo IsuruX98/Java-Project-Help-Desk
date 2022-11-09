@@ -18,7 +18,7 @@ public boolean addticket(String name, String email, String id, String contact, S
 					
 					Statement stmt = con.createStatement();
 					
-					String sql = "INSERT INTO addticket VALUES(0, '"+name+"', '"+email+"','"+id+"','"+contact+"','"+subject+"','"+description+"')";
+					String sql = "INSERT INTO addticket VALUES(0, '"+name+"', '"+email+"','"+id+"','"+contact+"','"+subject+"','"+description+"', now())";
 					int rs = stmt.executeUpdate(sql); //if connect return 1. if not return 0;
 					
 					//Data Successfully Inserted?
@@ -47,7 +47,7 @@ public boolean addticket(String name, String email, String id, String contact, S
 			Connection con = DBConnect.getConnection();
 			Statement stmt = con.createStatement();
 		
-			String sql = "SELECT * FROM addticket WHERE studentID = '"+pid+"'";
+			String sql = "SELECT * FROM addticket WHERE studentID = '"+pid+"' ORDER BY date DESC";
 		
 			ResultSet rs = stmt.executeQuery(sql);
 		
@@ -60,8 +60,9 @@ public boolean addticket(String name, String email, String id, String contact, S
 				String contact = rs.getString(5);
 				String subject = rs.getString(6);
 				String description = rs.getString(7);
+				String date = rs.getString(8);
 			
-				Ticket t1 = new Ticket(ticketNo ,name, email, id, contact, subject, description);
+				Ticket t1 = new Ticket(ticketNo, name, email, id, contact, subject, description, date);
 			
 				ticket1.add(t1);
 			

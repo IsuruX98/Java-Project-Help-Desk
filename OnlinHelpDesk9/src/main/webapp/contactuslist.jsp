@@ -99,6 +99,7 @@
                 <th class="uk-table-expand">User Email</th>
                 <th class="uk-table-expand">Subject</th>
                 <th class="uk-table-expand">Message</th>
+                <th class="uk-table-expand">Reply</th>
             </tr>
         </thead>
         <tbody>
@@ -129,6 +130,9 @@
                 </td>
                 <td class="uk-table-link">
                     <a class="uk-link-reset" href="">${msg.cmessage}</a>
+                </td>
+                <td>
+                    <a href="mailto:${msg.cname}">Send mail</a>
                 </td>
                 
             </tr>

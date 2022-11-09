@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 @WebServlet("/delete")
@@ -14,7 +15,7 @@ public class deleteUserServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//getting the user inputs
+				//getting the user inputs
 				String deletedataid = request.getParameter("deletedataid");
 				
 				//making a dispatcher object to redirect
@@ -25,6 +26,8 @@ public class deleteUserServlet extends HttpServlet {
 				
 				//creating a object from util class to access the method
 				UserDBUtil o = new UserDBUtil();
+				
+				
 				//passing the return value of the method
 				isTrue = o.deleteUser(deletedataid);
 				
@@ -42,6 +45,12 @@ public class deleteUserServlet extends HttpServlet {
 				//finalizing the dispatcher
 				dispatcher.forward(request, response);
 		
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String deletedataid = req.getParameter("deletedataid");
+		System.out.println(deletedataid);
 	}
 
 }

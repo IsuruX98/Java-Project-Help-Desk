@@ -1,7 +1,10 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <!-- importing the tag library connection -->
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
+    
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
   <head>
@@ -21,9 +24,7 @@
   </head>
 
   <body>
-    <!-- header -->
-
-    <header>
+  <header>
       <div
         class="uk-background-secondary"
         uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
@@ -75,7 +76,6 @@
         </nav>
       </div>
     </header>
-
     <!-- header ends -->
 	
     <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
@@ -86,72 +86,60 @@
               class="uk-article uk-margin-large"
               data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
             >
-              <h1 class="uk-text-center uk-text-bolder">User Profile</h1>
+              <h1 class="uk-text-center uk-text-bolder">Delete Profile</h1>
               <div class="uk-article-content">
                 <div class="uk-margin-medium-top uk-margin-medium-bottom">
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >Name</label
-                    >
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >E-mail</label
-                    >
-                  </div>
-                  <div class="uk-margin-bottom">
-                    <label class="uk-form-label uk-text-left" for="name"
-                      >Mobile Number</label
-                    >
-                  </div>
+                
+                <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+                <input type="hidden" id="deleteticket" value="<%= request.getAttribute("deleteticket")%>">
+	
+	
+	
+				<table class="uk-table uk-table-divider uk-table-hover">
+                    <tr>
+                      <td class="uk-text-bold">User ID :</td>
+                      <td class="uk-text-danger"><%= session.getAttribute("id")%></td>
+                    </tr>
+                    <tr>
+                      <td class="uk-text-bold">Name :</td>
+                      <td class="uk-text-danger"><%= session.getAttribute("name")%></td>
+                    </tr>
+                    <tr>
+                      <td class="uk-text-bold">E-mail :</td>
+                      <td class="uk-text-danger"><%= session.getAttribute("email")%></td>
+                    </tr>
+                    <tr>
+                      <td class="uk-text-bold">Mobile No :</td>
+                      <td class="uk-text-danger"><%= session.getAttribute("mobile")%></td>
+                    </tr>
+                  </table>
+
                   <br />
+                  <p>Are you sure you want to delete your profile ? </p>
+            
+                  <!-- to delete data  -->
                   
-
-                  <div class="uk-margin-bottom">
-                    <div class="uk-text-center">
-                      <input
-                        class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                        type="submit"
-                        value="my tickets"
-                      />
-                    </div>
-                  </div>
-
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
+				<form action="delete" method="post">
+				
+				<div class="uk-margin-bottom">
                       <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
-                          type="submit"
-                          value="update profile"
-                        />
-                      </div>
-                    </div>
-                  </form>
-
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
+				
+				<input type="hidden" name="deletedataid" value="<%= session.getAttribute("id")%>">
+	
+				<input class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small" type="submit" name="submit" value="yes delete my data"">
+				
+				</div>
+                </div>
+       
+				</form>
+				<div class="uk-margin-bottom">
                       <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small"
-                          type="submit"
-                          value="logout"
-                        />
-                      </div>
-                    </div>
-                  </form>
-
-                  <form action="#" method="#">
-                    <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-                        <input
-                          class="uk-button uk-button-danger uk-border-rounded uk-width-1-1 uk-button-small"
-                          type="submit"
-                          value="delete my profile"
-                        />
-                      </div>
-                    </div>
-                  </form>
+				<a href="acc.jsp">
+				<input class="uk-button uk-button-primary uk-border-rounded uk-width-1-1 uk-button-small" type="button" value="no, don't delete my data"">
+				</a>
+				</div>
+                </div>
+                  
                 </div>
               </div>
             </article>
@@ -165,7 +153,7 @@
           <div class="uk-position-center uk-position-relative">
             <img
               width="500px"
-              src="/Help Desk//src/img/userProfile.jpg"
+              src="img/delete.jpg"
               alt=""
             />
           </div>
@@ -173,7 +161,9 @@
       </div>
     </div>
 
-    <!-- responsive menu -->
+
+	
+	<!-- responsive menu -->
 
     <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
       <div class="uk-offcanvas-bar">
@@ -283,5 +273,20 @@
     </footer>
 
     <!-- footer ends -->
-  </body>
+
+<!-- JS alert for delete is fail -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+	<script type="text/javascript">
+	
+	var deleteticket = document.getElementById("deleteticket").value;
+	
+	if (deleteticket == "deleted") {
+		swal("Success","your ticket has been deleted successfully.","success");
+	}
+	
+	
+	</script>	
+</body>
 </html>

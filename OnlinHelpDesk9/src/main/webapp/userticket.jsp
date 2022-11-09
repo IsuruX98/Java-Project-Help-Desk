@@ -83,10 +83,22 @@
           <table
             class="uk-table uk-table-hover uk-table-divider uk-table-striped"
           >
+          <thead class="uk-background-secondary">
+              <tr>
+                
+                <th class="uk-table-expand">Ticket No</th>
+               <th class="uk-table-expand">Date</th>
+				<th class="uk-table-expand">Subject</th>
+                <th class="uk-table-expand"></th>
+                <th class="uk-table-expand"></th>
+                
+              </tr>
+            </thead>
           
           <c:forEach var = "get" items = "${getTicket}">
 	
 	          <c:set var ='id' value = '${get.ticketNo}'/>
+	          <c:set var ='date' value = '${get.date}'/>
 	          <c:set var ='name' value = '${get.name}'/>
 	          <c:set var ='email' value = '${get.email}'/>
 	          <c:set var ='id' value = '${get.id}'/>
@@ -96,44 +108,33 @@
 
 
 
-            <thead class="uk-background-secondary">
-              <tr>
-                
-                <th class="uk-table-expand">Ticket No</th>
-               
-                
-                <th class="uk-table-expand">User ID</th>
-             
-                <th class="uk-table-expand">Subject</th>
-                <th class="uk-table-expand"></th>
-                <th class="uk-table-expand"></th>
-                
-              </tr>
-            </thead>
+            
             <tbody>
               <tr>
                 <td>${get.ticketNo}</td>
-	              <td>${get.id}</td>
+                <td>${get.date}</td>
                 <td>${get.subject}</td>
 
-                <c:url value = 'updateticket.jsp' var = 'updateticket'>
+    <c:url value = 'updateticket.jsp' var = 'updateticket'>
 		<c:param name = 'tid' value = '${get.ticketNo}'/>
-		<c:param name = 'name' value = '${name}'/>
-		<c:param name = 'email' value = '${email}'/>
-		<c:param name = 'id' value = '${id}'/>
-		<c:param name = 'contact' value = '${contact}'/>
-		<c:param name = 'subject' value = '${subject}'/>
-		<c:param name = 'description' value = '${description}'/>
+		<c:param name = 'date' value = '${get.date}'/>
+		<c:param name = 'name' value = '${get.name}'/>
+		<c:param name = 'email' value = '${get.email}'/>
+		<c:param name = 'id' value = '${get.id}'/>
+		<c:param name = 'contact' value = '${get.contact}'/>
+		<c:param name = 'subject' value = '${get.subject}'/>
+		<c:param name = 'description' value = '${get.description}'/>
 	</c:url>
 	
 	<c:url value = 'deleteTicket.jsp' var = 'deleteticket'>
 		<c:param name = 'tid' value = '${get.ticketNo}'/>
-		<c:param name = 'name' value = '${name}'/>
-		<c:param name = 'email' value = '${email}'/>
-		<c:param name = 'id' value = '${id}'/>
-		<c:param name = 'contact' value = '${contact}'/>
-		<c:param name = 'subject' value = '${subject}'/>
-		<c:param name = 'description' value = '${description}'/>
+		<c:param name = 'date' value = '${get.date}'/>
+		<c:param name = 'name' value = '${get.name}'/>
+		<c:param name = 'email' value = '${get.email}'/>
+		<c:param name = 'id' value = '${get.id}'/>
+		<c:param name = 'contact' value = '${get.contact}'/>
+		<c:param name = 'subject' value = '${get.subject}'/>
+		<c:param name = 'description' value = '${get.description}'/>
 	</c:url>
 
                 <td><a href='${updateticket}'><button class="uk-button uk-button-secondary uk-button-small">Edit</button></a></td>

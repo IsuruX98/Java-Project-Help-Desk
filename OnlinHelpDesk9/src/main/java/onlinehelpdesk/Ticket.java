@@ -9,43 +9,51 @@ public class Ticket {
 	  private String contact;
 	  private String subject;
 	  private String description;
+	  private String date;
 	  
-	  public Ticket(String ticketNo, String name, String email, String id, String contact, String subject, String description) {
-	    this.ticketNo = ticketNo;
-	    this.name = name;
-	    this.email = email;
-	    this.id = id;
-	    this.contact = contact;
-	    this.subject = subject;
-	    this.description = description;
-	  }
-	  
-	  public String getTicketNo() {
-	    return ticketNo;
-	  }
+	  public Ticket(String ticketNo, String name, String email, String id, String contact, String subject,
+			String description, String date) {
+		
+		this.ticketNo = ticketNo;
+		this.name = name;
+		this.email = email;
+		this.id = id;
+		this.contact = contact;
+		this.subject = subject;
+		this.description = description;
+		this.date = date;
+	}
 
-	  public String getName() {
-	    return name;
-	  }
+	public String getTicketNo() {
+		return ticketNo;
+	}
 
-	  public String getEmail() {
-	    return email;
-	  }
+	public String getName() {
+		return name;
+	}
 
-	  public String getId() {
-	    return id;
-	  }
+	public String getEmail() {
+		return email;
+	}
 
-	  public String getContact() {
-	    return contact;
-	  }
+	public String getId() {
+		return id;
+	}
 
-	  public String getSubject() {
-	    return subject;
-	  }
+	public String getContact() {
+		return contact;
+	}
 
-	  public String getDescription() {
-	    return description;
-	  }
+	public String getSubject() {
+		return subject;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public String getDate() {
+		return date;
+	}
 	
 }
