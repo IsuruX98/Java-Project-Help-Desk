@@ -18,20 +18,13 @@ public class viewticketServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		
-		TicketdbUtil ticket3 = new TicketdbUtil();
-		
-		//ticket3.getinfo(id);
-		
-		try {
+			TicketdbUtil ticket3 = new TicketdbUtil();
+
 			List<Ticket> getTicket = ticket3.getinfo(id);
 			request.setAttribute("getTicket", getTicket);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("userticket.jsp"); 
-			dis.forward(request, response);
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+			dis.forward(request, response);			
 		
 	}
 

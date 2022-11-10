@@ -103,7 +103,7 @@
               class="uk-article uk-margin-large"
               data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
             >
-              <h1 class="uk-text-center uk-text-bolder">Delete Ticket</h1>
+              <h1 class="uk-text-center uk-text-bolder">View Ticket</h1>
               <div class="uk-article-content">
                 <form action = 'y_delete' method = 'post'
                   class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom"
@@ -234,7 +234,7 @@
                   </div>
 
                   <br />
-				 <p>Are you sure you want to delete this Ticket ?</p>
+                  
                   <div class="uk-text-center">
                     <input
                       class="uk-button uk-button-danger uk-border-rounded uk-width-1-1"
@@ -242,14 +242,21 @@
                       value="Delete"
                     />
                   </div>
-                </form>
-                <div class="uk-margin-bottom">
-                      <div class="uk-text-center">
-				<a href="acc.jsp">
-				<input class="uk-button uk-button-primary uk-border-rounded uk-width-1-1 uk-button-small" type="button" value="no, don't delete"">
-				</a>
-				</div>
-                </div>
+				 </form>
+				 
+                <div class="uk-text-center">
+                  			<form action="https://formspree.io/f/xrgdrdgk" method="post">
+							
+							<input type="hidden" name="email" value="<%= email%>">
+							
+							<input
+                      		class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
+                      		type="submit"
+                      		value="Send a Mail"
+                    		/>
+							</form>
+                  </div>
+                  
               </div>
             </article>
           </div>

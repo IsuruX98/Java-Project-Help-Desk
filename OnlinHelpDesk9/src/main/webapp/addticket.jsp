@@ -107,7 +107,7 @@ response.sendRedirect("login.jsp");
                                             class="uk-input uk-border-rounded"
                                             name="name"
                                             type="text"
-                                            value="<%= session.getAttribute(" name")%>"
+                                            value="<%= session.getAttribute("name")%>"
                                     readonly="readonly"
                                     />
                                 </div>
@@ -122,7 +122,7 @@ response.sendRedirect("login.jsp");
                                             class="uk-input uk-border-rounded"
                                             name="email"
                                             type="text"
-                                            value="<%= session.getAttribute(" email")%>"
+                                            value="<%= session.getAttribute("email")%>"
                                     readonly="readonly"
                                     />
                                 </div>
@@ -138,7 +138,7 @@ response.sendRedirect("login.jsp");
                                             class="uk-input uk-border-rounded"
                                             name="id"
                                             type="text"
-                                            value="<%= session.getAttribute(" id")%>"
+                                            value="<%= session.getAttribute("id")%>"
                                     readonly="readonly"
                                     />
                                 </div>
@@ -154,7 +154,7 @@ response.sendRedirect("login.jsp");
                                             class="uk-input uk-border-rounded"
                                             name="contact"
                                             type="text"
-                                            value="<%= session.getAttribute(" mobile")%>"
+                                            value="<%= session.getAttribute("mobile")%>"
                                     readonly="readonly"
                                     />
                                 </div>

@@ -1,24 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en-gb" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Help Desk</title>
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700&display=swap"
-      rel="stylesheet"
-    />
+    <title>User tickets</title>
 
     <!-- UIkit CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/css/uikit.min.css"
     />
-
-    <!-- <script src="js/uikit.js"></script> -->
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.11/dist/js/uikit.min.js"></script>
@@ -39,37 +33,31 @@
               <div class="uk-navbar-left">
                 <a
                   class="uk-navbar-item uk-logo uk-visible@m uk-text-muted uk-text-bold uk-text-bolder"
-                  href="adminHome.jsp"
-                  >Help Desk Admin</a
+                  href="index.html"
+                  >Help Desk</a
                 >
               </div>
               <div class="uk-navbar-center uk-hidden@m">
                 <a
                   class="uk-navbar-item uk-logo uk-text-muted uk-text-bold"
-                  href="adminHome.jsp"
-                  >Help Desk Admin</a
+                  href="index.html"
+                  >Help Desk</a
                 >
               </div>
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
-                  <li><a href="adminHome.jsp">Home</a></li>
+                  <li><a href="index.html">Home</a></li>
                   <li><a href="#">menu 01</a></li>
                   <li><a href="#">menu 02</a></li>
                   <li><a href="#">menu 03</a></li>
                   <li><a href="#">menu 04</a></li>
                   <li>
                     <div class="uk-navbar-item">
-                      <%
-					if(session.getAttribute("name")==null){
-						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
-					}else{
-						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
-						%>
-						<%= session.getAttribute("name")%>
-						 <%
-						out.print("</a>");
-					}
-					%>
+                      <a
+                        class="uk-button uk-button-small uk-text-bold"
+                        href="contact.html"
+                        >Login</a
+                      >
                     </div>
                   </li>
                 </ul>
@@ -85,116 +73,94 @@
           </div>
         </nav>
       </div>
-
-      <div
-        class="uk-section-large uk-position-relative uk-position-z-index uk-background-fixed uk-light"
-        style="background-image: url(img/home.jpg)"
-      >
-        <div
-          class="uk-container"
-          data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
-        >
-          <h1 class="uk-text-center uk-margin-remove-top uk-text-bolder">
-            Welcome to Admin Home
-          </h1>
-          <h3 class="uk-text-center uk-margin-remove-top"><%= session.getAttribute("name")%></h3>
-        </div>
-      </div>
     </header>
 
     <!-- header ends -->
-
-    <div class="uk-section">
-    
-        
-      <div
-        class="uk-container"
-        data-uk-scrollspy="cls: uk-animation-scale-up; repeat: true"
-      >
-        <div class="uk-text-center" uk-grid>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="userlist"></a>
-              <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                View User List
-                            </h3>
-            </div>
-          </div>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="msglist"></a>
-              <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                View Message List
-                            </h3>
+    <div class="uk-section uk-section">
+      <div class="uk-container uk-container-medium">
+        <h1 class="uk-text-center uk-text-bolder">Ticket List</h1>
+        <div class="uk-overflow-auto">
+          <table
+            class="uk-table uk-table-hover uk-table-divider uk-table-striped"
+          >
+          <thead class="uk-background-secondary">
+              <tr>
               
-            </div>
-          </div>
-        </div>
+					<th class="uk-table-expand uk-text-center">Ticket No</th>
+                    <th class="uk-table-expand uk-text-center">Date</th>
+                    <th class="uk-table-expand uk-text-center">Subject</th>
+                    <th class="uk-table-expand uk-text-center"></th>
+                
+              </tr>
+            </thead>
+          
+          <c:forEach var = "get" items = "${getAdminTicket}">
+	
+	          <c:set var ='id' value = '${get.ticketNo}'/>
+	          <c:set var ='date' value = '${get.date}'/>
+	          <c:set var ='name' value = '${get.name}'/>
+	          <c:set var ='email' value = '${get.email}'/>
+	          <c:set var ='id' value = '${get.id}'/>
+	          <c:set var ='contact' value = '${get.contact}'/>
+	          <c:set var ='subject' value = '${get.subject}'/>
+	          <c:set var ='description' value = '${get.description}'/>
 
-        <div class="uk-text-center" uk-grid>
-        
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="yadminlist"></a>
-              <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                View Ticket List
-                            </h3>
-            </div>
-          </div>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="AddFAQ.jsp"></a>
-              <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                Add FAQ
-                            </h3>
-            </div>
-          </div>
-        </div>
 
-        <div class="uk-text-center" uk-grid>
-        
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="#"></a>
-              <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                Service
-                            </h3>
-            </div>
-          </div>
-          <div class="uk-width-expand@m">
-            <div
-              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
-            >
-              <a class="uk-position-cover" href="#"></a>
-              <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                Service
-                            </h3>
-            </div>
-          </div>
+
+            
+            <tbody>
+              <tr>
+               			<td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${get.ticketNo}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${get.date}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${get.subject}</a>
+                        </td>
+
+<%--     <c:url value = 'updateticket.jsp' var = 'updateticket'>
+		<c:param name = 'tid' value = '${get.ticketNo}'/>
+		<c:param name = 'date' value = '${get.date}'/>
+		<c:param name = 'name' value = '${get.name}'/>
+		<c:param name = 'email' value = '${get.email}'/>
+		<c:param name = 'id' value = '${get.id}'/>
+		<c:param name = 'contact' value = '${get.contact}'/>
+		<c:param name = 'subject' value = '${get.subject}'/>
+		<c:param name = 'description' value = '${get.description}'/>
+	</c:url> --%>
+	
+	<c:url value = 'adminViewTIcket.jsp' var = 'deleteticket'>
+		<c:param name = 'tid' value = '${get.ticketNo}'/>
+		<c:param name = 'date' value = '${get.date}'/>
+		<c:param name = 'name' value = '${get.name}'/>
+		<c:param name = 'email' value = '${get.email}'/>
+		<c:param name = 'id' value = '${get.id}'/>
+		<c:param name = 'contact' value = '${get.contact}'/>
+		<c:param name = 'subject' value = '${get.subject}'/>
+		<c:param name = 'description' value = '${get.description}'/>
+	</c:url>
+
+         <%--        <td><a href='${updateticket}'><button class="uk-button uk-button-secondary uk-button-small">Edit</button></a></td> --%>
+                <td><a href='${deleteticket}'><button class="uk-button-small uk-button-primary uk-border-rounded uk-width-1-1">View</button></a></td>
+              </tr>
+            </tbody>
+          </c:forEach>
+          </table>
         </div>
       </div>
     </div>
-
     <!-- responsive menu -->
 
     <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
       <div class="uk-offcanvas-bar">
-        <a class="uk-logo" href="adminHome.html">Help Desk Admin</a>
+        <a class="uk-logo" href="index.html">Help Desk</a>
         <button class="uk-offcanvas-close" type="button" data-uk-close></button>
         <ul
           class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-          <li><a href="adminHome.html">Admin Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#">menu 01</a></li>
           <li><a href="#">menu 02</a></li>
           <li><a href="#">menu 03</a></li>
@@ -295,5 +261,5 @@
     </footer>
 
     <!-- footer ends -->
-  </body>
+  </body>
 </html>

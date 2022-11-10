@@ -24,7 +24,7 @@ public class DeleteticketServlet extends HttpServlet {
 		isTrue = ticket4.deleteTicket(ticketNo);
 		
 		if(isTrue == true) {
-			RequestDispatcher dis = request.getRequestDispatcher("acc.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("deleteticket", "deleted");
 			dis.forward(request, response);
 		} else {

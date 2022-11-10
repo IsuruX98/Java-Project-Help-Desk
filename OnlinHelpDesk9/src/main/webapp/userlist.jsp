@@ -86,20 +86,21 @@
     
     <input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
     
-    <div class="uk-section uk-section-default">
-    <h1 class="uk-text-center uk-text-bolder">User List</h1>
+    <div class="uk-section uk-section">
     <div class="uk-container uk-container-medium">
-    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover ">
-    <thead class="uk-background-secondary">
-        <tr>
-            <th>User ID</th>
-            <th>User Name</th>
-            <th>User Email</th>
-            <th>User Mobile</th>
-        </tr>
-    </thead>
-    
-    <tbody>
+        <h1 class="uk-text-center uk-text-bolder">User List</h1>
+        <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-hover uk-table-divider uk-table-striped">
+                <thead class="uk-background-secondary">
+                <tr>
+                    <th class="uk-table-expand uk-text-center">User Id</th>
+                    <th class="uk-table-expand uk-text-center">User Name</th>
+                    <th class="uk-table-expand uk-text-center">User Email</th>
+                    <th class="uk-table-expand uk-text-center">User Mobile</th>
+                    <th class="uk-table-expand uk-text-center">Reply</th>
+                </tr>
+                </thead>
+                <tbody>
     <!-- looping the user data using c tag library -->
 	
 	<c:forEach var="user" items="${userdetails}">
@@ -110,18 +111,42 @@
 	<c:set var="email" value="${user.uemail}"/>
 	<c:set var="mobile" value="${user.umobile}"/>
 	<c:set var="pw" value="${user.upw}"/>
-        <tr>
-            <td>${user.id}</td>
-            <td>${user.uname}</td>
-            <td>${user.uemail}</td>
-            <td>${user.umobile}</td>
-            
-        </tr>
+	<tr>
+                        
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${user.id}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${user.uname}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${user.uemail}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${user.umobile}</a>
+                        </td>
+                        <td>
+                            <form action="https://formspree.io/f/xrgdrdgk" method="post">
+							
+							<input type="hidden" name="email" value="${user.uemail}">
+							
+							<input
+                      		class="uk-button-small uk-button-primary uk-border-rounded uk-width-1-1"
+                      		type="submit"
+                      		value="Send a Mail"
+                    		/>
+							</form>
+                        </td>
+
+                    </tr>
         </c:forEach>
     </tbody>
-	</table>
+            </table>
+        </div>
     </div>
-	</div>
+</div>
+	
+	
 
     <!-- responsive menu -->
 

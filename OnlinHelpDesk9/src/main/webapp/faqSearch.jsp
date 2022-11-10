@@ -1,15 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
-
-<!-- importing the tag library connection -->
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en-gb" dir="ltr">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Contact Us List</title>
+    <title>Login</title>
 
     <!-- UIkit CSS -->
     <link
@@ -25,7 +21,7 @@ pageEncoding="ISO-8859-1"%>
 <body>
 
 <!-- status from util class -->
-<input type="hidden" id="status" value="<%= request.getAttribute(" status")%>">
+<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 
 <!-- header -->
 
@@ -84,73 +80,59 @@ pageEncoding="ISO-8859-1"%>
 
 <!-- header ends -->
 
-<input type="hidden" id="status" value="<%= request.getAttribute(" status")%>">
+<div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+    <div>
+        <div class="uk-card">
+            <div class="uk-container uk-container-large uk-padding-large">
+                <article
+                        class="uk-article uk-margin-large"
+                        data-uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: true"
+                >
+                    <h1 class="uk-text-center uk-text-bolder">Search FAQ</h1>
+                    <div class="uk-article-content">
+                        <form
+                                class="uk-form-stacked uk-margin-medium-top uk-margin-medium-bottom" action="GetFAQ"
+                                method="post"
+                        >
+                            <div class="uk-margin-bottom">
+                                <label class="uk-form-label uk-text-left" for="search"
+                                >Search Here</label
+                                >
+                                <div class="uk-form-controls">
+                                    <input
+                                            id="search"
+                                            class="uk-input uk-border-rounded"
+                                            name="search"
+                                            type="text"
+                                            placeholder="enter heading for search....."
 
-<div class="uk-section uk-section">
-    <div class="uk-container uk-container-medium">
-        <h1 class="uk-text-center uk-text-bolder">User Message List</h1>
-        <div class="uk-overflow-auto">
-            <table class="uk-table uk-table-hover uk-table-divider uk-table-striped">
-                <thead class="uk-background-secondary">
-                <tr>
-                    <th class="uk-table-expand uk-text-center">User Id</th>
-                    <th class="uk-table-shrink uk-text-center">User Name</th>
-                    <th class="uk-table-shrink uk-text-center">User Email</th>
-                    <th class="uk-table-expand uk-text-center">Subject</th>
-                    <th class="uk-table-expand uk-text-center">Message</th>
-                    <th class="uk-table-shrink uk-text-center">Reply</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- looping the user data using c tag library -->
+                                    />
+                                </div>
+                            </div>
 
-                <c:forEach var="msg" items="${clist}">
-
-                    <!-- storing the user data into variables -->
-                    <c:set var="id" value="${msg.cid}"/>
-                    <c:set var="name" value="${msg.cname}"/>
-                    <c:set var="email" value="${msg.cemail}"/>
-                    <c:set var="subject" value="${msg.csubject}"/>
-                    <c:set var="message" value="${msg.cmessage}"/>
-
-                    <tr>
-                        
-                        <td class="uk-table-link">
-                            <a class="uk-link-reset uk-text-center" href="">${msg.cid}</a>
-                        </td>
-                        <td class="uk-table-link">
-                            <a class="uk-link-reset uk-text-center" href="">${msg.cname}</a>
-                        </td>
-                        <td class="uk-table-link">
-                            <a class="uk-link-reset uk-text-center" href="">${msg.cemail}</a>
-                        </td>
-                        <td class="uk-table-link">
-                            <a class="uk-link-reset uk-text-center" href="">${msg.csubject}</a>
-                        </td>
-                        <td class="uk-table-link">
-                            <a class="uk-link-reset" href="">${msg.cmessage}</a>
-                        </td>
-                        <td>
-                            <form action="https://formspree.io/f/xrgdrdgk" method="post">
-							
-							<input type="hidden" name="email" value="${msg.cemail}">
-							
-							<input
-                      		class="uk-button-small uk-button-primary uk-border-rounded uk-width-1-1"
-                      		type="submit"
-                      		value="Send Reply"
-                    		/>
-							</form>
-                        </td>
-
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                            <br/>
+                            
+                            <div class="uk-text-center">
+                                <input
+                                        class="uk-button uk-button-primary uk-border-rounded uk-width-1-1"
+                                        type="submit"
+                                        value="Search"
+                                />
+                            </div>
+                        </form>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-background-default">
+            <div class="uk-position-center uk-position-relative">
+                <img width="550px" src="" alt=""/>
+            </div>
         </div>
     </div>
 </div>
-
 
 <!-- responsive menu -->
 
@@ -262,25 +244,6 @@ pageEncoding="ISO-8859-1"%>
 </footer>
 
 <!-- footer ends -->
-
-<!-- JS alert for registration is done -->
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>
-
-<script type="text/javascript">
-
-    var status = document.getElementById("status").value;
-    if (status == "failed") {
-        swal("Sorry", "wrong username or password", "error");
-    } else if (status == "invalidemail") {
-        swal("Sorry", "Please Enter Username", "error");
-    } else if (status == "invalidupwd") {
-        swal("Sorry", "Please Enter Password", "error");
-    } else if (status == "updatedone") {
-        swal("Done", "profile updated successfully please relogin", "success");
-    }
-</script>
 
 </body>
 </html>

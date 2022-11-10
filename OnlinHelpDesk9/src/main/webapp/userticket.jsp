@@ -86,11 +86,11 @@
           <thead class="uk-background-secondary">
               <tr>
                 
-                <th class="uk-table-expand">Ticket No</th>
-               <th class="uk-table-expand">Date</th>
-				<th class="uk-table-expand">Subject</th>
-                <th class="uk-table-expand"></th>
-                <th class="uk-table-expand"></th>
+                <th class="uk-table-expand uk-text-center">Ticket No</th>
+               <th class="uk-table-expand uk-text-center">Date</th>
+				<th class="uk-table-expand uk-text-center">Subject</th>
+                <th class="uk-table-expand uk-text-center"></th>
+                <th class="uk-table-expand uk-text-center"></th>
                 
               </tr>
             </thead>
@@ -111,9 +111,15 @@
             
             <tbody>
               <tr>
-                <td>${get.ticketNo}</td>
-                <td>${get.date}</td>
-                <td>${get.subject}</td>
+              <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${get.ticketNo}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${get.date}</a>
+                        </td>
+                        <td class="uk-table-link">
+                            <a class="uk-link-reset uk-text-center" href="">${get.subject}</a>
+                        </td>
 
     <c:url value = 'updateticket.jsp' var = 'updateticket'>
 		<c:param name = 'tid' value = '${get.ticketNo}'/>
@@ -137,8 +143,10 @@
 		<c:param name = 'description' value = '${get.description}'/>
 	</c:url>
 
-                <td><a href='${updateticket}'><button class="uk-button uk-button-secondary uk-button-small">Edit</button></a></td>
-                <td><a href='${deleteticket}'><button class="uk-button uk-button-secondary uk-button-small">Delete</button></a></td>
+                <td><a href='${updateticket}'><button class="uk-button-small uk-button-primary uk-border-rounded uk-width-1-1">Edit</button></a></td>
+                <td><a href='${deleteticket}'><button class="uk-button-small uk-button-primary uk-border-rounded uk-width-1-1">Delete</button></a></td>
+                
+                
               </tr>
             </tbody>
           </c:forEach>

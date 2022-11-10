@@ -74,6 +74,43 @@ public boolean addticket(String name, String email, String id, String contact, S
 		return ticket1;
 	}
 	
+	
+	public List<Ticket> getinfoAdmin(){
+		
+		ArrayList<Ticket> ticket1 =new ArrayList<>();
+
+		try {
+			
+			Connection con = DBConnect.getConnection();
+			Statement stmt = con.createStatement();
+		
+			String sql = "SELECT * FROM addticket ORDER BY date DESC";
+		
+			ResultSet rs = stmt.executeQuery(sql);
+		
+	
+			while(rs.next()) {
+				String ticketNo = rs.getString(1);
+				String name = rs.getString(2);
+				String email = rs.getString(3);
+				String id = rs.getString(4);
+				String contact = rs.getString(5);
+				String subject = rs.getString(6);
+				String description = rs.getString(7);
+				String date = rs.getString(8);
+			
+				Ticket t2 = new Ticket(ticketNo, name, email, id, contact, subject, description, date);
+			
+				ticket1.add(t2);
+			
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return ticket1;
+	}
+	
 
 	public boolean updateTicket(String ticketNo, String name, String email, String id, String contact, String subject , String description) {
 	

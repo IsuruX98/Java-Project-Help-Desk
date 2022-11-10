@@ -21,7 +21,7 @@ pageEncoding="ISO-8859-1"%>
 <body>
 
 <!-- status from util class -->
-<input type="hidden" id="status" value="<%= request.getAttribute(" status")%>">
+<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 
 <!-- header -->
 
@@ -147,7 +147,7 @@ pageEncoding="ISO-8859-1"%>
     <div>
         <div class="uk-card uk-background-default">
             <div class="uk-position-center uk-position-relative">
-                <img width="550px" src="img/login.jpg" alt=""/>
+                <img width="550px" src="img/loginNew.jpg" alt=""/>
             </div>
         </div>
     </div>
