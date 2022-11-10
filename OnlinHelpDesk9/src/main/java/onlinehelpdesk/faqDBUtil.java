@@ -46,7 +46,7 @@ public class faqDBUtil implements I_faq {
 	  try {
 	   con = DBConnect.getConnection();
 	   stmt = con.createStatement();
-	   String qry = "SELECT * FROM faq WHERE heading LIKE '"+heading+"'";
+	   String qry = "SELECT * FROM faq WHERE Heading LIKE '%"+heading+"%'";
 	   
 	   rset = stmt.executeQuery(qry);
 	   

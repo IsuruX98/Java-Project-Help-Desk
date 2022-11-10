@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ShowFAQServlet</display-name>
+    <servlet-name>ShowFAQServlet</servlet-name>
+    <servlet-class>onlinehelpdesk.ShowFAQServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowFAQServlet</servlet-name>
+    <url-pattern>/ShowFAQServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
