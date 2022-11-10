@@ -144,7 +144,7 @@
        <c:param name="id" value="${id}" />
        <c:param name="heading" value="${heading}" />
        <c:param name="content" value="${content}" />
-       <c:param name="category  " value="${category}" />
+       <c:param name="category" value="${category}" />
       </c:url>
       
       			<td>

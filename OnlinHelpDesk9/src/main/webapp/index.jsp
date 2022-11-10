@@ -139,6 +139,7 @@ pageEncoding="ISO-8859-1"%>
 
 <div class="uk-section uk-section-muted">
     <div class="uk-container">
+    <h2 class="uk-text-center">Services</h2>
         <div
                 class="uk-child-width-1-2@m uk-grid-match- uk-grid-small"
                 data-uk-grid
@@ -291,21 +292,15 @@ pageEncoding="ISO-8859-1"%>
 
 <div class="uk-section uk-section-muted" id="faq">
     <div class="uk-container uk-container-small">
-        <h2 class="uk-text-center uk-margin-medium-top">Frequently asked questions</h2>
-        <ul class="uk-margin-medium-top" data-uk-accordion="multiple: true">
-            <li>
-                <a
-                        class="uk-accordion-title uk-box-shadow-hover-small uk-card-small uk-card-body uk-card-default"
-                        href="#"
-                >Question</a
-                >
-                <div class="uk-article-content uk-accordion-content link-primary">
-                    <p>
-                        question eka visadana vidiya gana podi hallak liyala mekata danna ona
-                    </p>
-                </div>
-            </li>
-        </ul>
+        
+            <div
+              class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
+            >
+              <a class="uk-position-cover" href="userViewFAQ.jsp"></a>
+              <h3 class="uk-card-title uk-margin-remove uk-text-primary uk-text-center">
+                                <span data-uk-icon="icon: question; ratio: 1.5"></span>  Frequently asked questions
+                            </h3>
+            </div>
     </div>
 </div>
 

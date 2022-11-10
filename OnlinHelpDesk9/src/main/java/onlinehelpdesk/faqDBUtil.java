@@ -56,8 +56,6 @@ public class faqDBUtil implements I_faq {
 	    String content = rset.getString(3);
 	    String category = rset.getString(4);
 	    
-	    System.out.println(id);
-	    System.out.println(category);
 	    
 	    FAQ f1 = new FAQ(id,heading1,content,category);
 	    faq.add(f1);
