@@ -43,14 +43,14 @@ pageEncoding="ISO-8859-1"%>
                     <div class="uk-navbar-left">
                         <a
                                 class="uk-navbar-item uk-logo uk-visible@m uk-text-muted uk-text-bold uk-text-bolder"
-                                href="index.html"
+                                href="index.jsp"
                         >Help Desk</a
                         >
                     </div>
                     <div class="uk-navbar-center uk-hidden@m">
                         <a
                                 class="uk-navbar-item uk-logo uk-text-muted uk-text-bold"
-                                href="index.html"
+                                href="index.jsp"
                         >Help Desk</a
                         >
                     </div>
