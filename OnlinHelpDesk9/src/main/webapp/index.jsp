@@ -32,11 +32,6 @@ pageEncoding="ISO-8859-1"%>
 <body>
 <!-- header -->
 
-<!-- status from java class -->
-<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
-<input type="hidden" id="ticket" value="<%= request.getAttribute("ticket")%>">
-<input type="hidden" id="deleteticket" value="<%= request.getAttribute("deleteticket")%>">
-
 <header>
     <div
             class="uk-background-secondary"
@@ -118,6 +113,11 @@ pageEncoding="ISO-8859-1"%>
 </header>
 
 <!-- header ends -->
+
+<!-- status from java class -->
+<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+<input type="hidden" id="ticket" value="<%= request.getAttribute("ticket")%>">
+<input type="hidden" id="deleteticket" value="<%= request.getAttribute("deleteticket")%>">
 
 
 <!-- About us -->

@@ -26,7 +26,7 @@ pageEncoding="ISO-8859-1"%>
 <!-- header -->
 
 <header>
-    <div
+      <div
             class="uk-background-secondary"
             uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"
     >
@@ -36,31 +36,41 @@ pageEncoding="ISO-8859-1"%>
                     <div class="uk-navbar-left">
                         <a
                                 class="uk-navbar-item uk-logo uk-visible@m uk-text-muted uk-text-bold uk-text-bolder"
-                                href="index.jsp"
+                                href="index.html"
                         >Help Desk</a
                         >
                     </div>
                     <div class="uk-navbar-center uk-hidden@m">
                         <a
                                 class="uk-navbar-item uk-logo uk-text-muted uk-text-bold"
-                                href="index.jsp"
+                                href="index.html"
                         >Help Desk</a
                         >
                     </div>
                     <div class="uk-navbar-right">
                         <ul class="uk-navbar-nav uk-visible@m">
                             <li><a href="index.jsp">Home</a></li>
-                            <li><a href="#">menu 01</a></li>
-                            <li><a href="#">menu 02</a></li>
-                            <li><a href="#">menu 03</a></li>
-                            <li><a href="#">menu 04</a></li>
+                            <li><a href="#">View Articles</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="contactUs.jsp">Contact Us</a></li>
                             <li>
+
                                 <div class="uk-navbar-item">
-                                    <a
-                                            class="uk-button uk-button-small uk-text-bold"
-                                            href="login.jsp"
-                                    >Login</a
-                                    >
+                                
+									<!-- check for the user type -->
+                                    
+                                    <%
+                                    if(session.getAttribute("name")==null){
+                                    out.print("<a class=\"uk-button uk-button-small uk-text-bold\"href=\"login.jsp\">Login</a>");                                    
+                                    }else{
+                                    out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
+                                    %>
+                                    <%= session.getAttribute("name")%>
+                                    <%
+                                    out.print("</a>");
+                                    }
+                                    %>
+
                                 </div>
                             </li>
                         </ul>
@@ -76,7 +86,7 @@ pageEncoding="ISO-8859-1"%>
             </div>
         </nav>
     </div>
-</header>
+    </header>
 
 <!-- header ends -->
 
@@ -162,18 +172,30 @@ pageEncoding="ISO-8859-1"%>
         <ul
                 class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">menu 01</a></li>
-            <li><a href="#">menu 02</a></li>
-            <li><a href="#">menu 03</a></li>
-            <li><a href="#">menu 04</a></li>
-            <li>
-                <div class="uk-navbar-item">
-                    <a class="uk-button uk-button-primary" href="contact.html"
-                    >button</a
-                    >
-                </div>
-            </li>
+            <li><a href="index.jsp">Home</a></li>
+                            <li><a href="#">View Articles</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="contactUs.jsp">Contact Us</a></li>
+                            <li>
+
+                                <div class="uk-navbar-item">
+                                
+									<!-- check for the user type -->
+                                    
+                                    <%
+                                    if(session.getAttribute("name")==null){
+                                    out.print("<a class=\"uk-button uk-button-small uk-text-bold\"href=\"login.jsp\">Login</a>");                                    
+                                    }else{
+                                    out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
+                                    %>
+                                    <%= session.getAttribute("name")%>
+                                    <%
+                                    out.print("</a>");
+                                    }
+                                    %>
+
+                                </div>
+                            </li>
         </ul>
         <div class="uk-margin-top uk-text-center">
             <div
@@ -220,9 +242,9 @@ pageEncoding="ISO-8859-1"%>
     <div class="uk-container uk-container-small">
         <div>
             <ul class="uk-subnav uk-flex-center">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">menu 01</a></li>
-                <li><a href="#">menu 02</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#">View Articles</a></li>
             </ul>
         </div>
         <div class="uk-margin-medium">

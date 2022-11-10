@@ -175,9 +175,9 @@
             <div
               class="uk-card uk-card-default uk-card-body uk-card-hover uk-border-rounded"
             >
-              <a class="uk-position-cover" href="#"></a>
+              <a class="uk-position-cover" href="article.jsp"></a>
               <h3 class="uk-card-title uk-margin-remove uk-text-secondary">
-                                Service
+                                Add New Article
                             </h3>
             </div>
           </div>
