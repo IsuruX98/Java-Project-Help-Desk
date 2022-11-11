@@ -131,7 +131,7 @@
     <div>
         <div class="uk-card uk-background-default">
             <div class="uk-position-center uk-position-relative">
-                <img width="550px" src="" alt=""/>
+                <img width="550px" src="img/search.jpg" alt=""/>
             </div>
         </div>
     </div>
