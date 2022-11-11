@@ -25,10 +25,11 @@ public class AddFAQServlet extends HttpServlet {
 		  isTrue=db.insertFAQ(heading, content, category);
 		  
 		  if(isTrue==true) {
-		   RequestDispatcher dis = request.getRequestDispatcher("Success.jsp");
+			  request.setAttribute("FAQ", "FAQadded");
+		   RequestDispatcher dis = request.getRequestDispatcher("adminHome.jsp");
 		    dis.forward(request, response);
 		  }else{
-		   RequestDispatcher dis2 = request.getRequestDispatcher("UnSuccess.jsp");
+		   RequestDispatcher dis2 = request.getRequestDispatcher("adminHome.jsp");
 		   dis2.forward(request, response);
 		  }
 

@@ -24,12 +24,13 @@ public class UpdateFAQS extends HttpServlet {
 		  boolean rs = db.updateFAQ(id, heading, content, category);
 		  
 		  if(rs==true) {
-		   RequestDispatcher rd = request.getRequestDispatcher("Success.jsp"); 
+		   request.setAttribute("FAQupdate", "FAQupdated");
+		   RequestDispatcher rd = request.getRequestDispatcher("adminHome.jsp"); 
 		   rd.forward(request, response);
 		    
 		  }
 		  else {
-		   RequestDispatcher rd = request.getRequestDispatcher("UnSuccess.jsp");
+		   RequestDispatcher rd = request.getRequestDispatcher("adminHome.jsp");
 		   rd.forward(request, response);
 		  }
 		

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserDBUtil {
+public class UserDBUtil implements I_User {
 	
 	private static boolean isSuccess = false;
 	static boolean userCheck = false;

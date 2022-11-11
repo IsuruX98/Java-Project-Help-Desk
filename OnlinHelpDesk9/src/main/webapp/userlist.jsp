@@ -40,31 +40,34 @@
               <div class="uk-navbar-left">
                 <a
                   class="uk-navbar-item uk-logo uk-visible@m uk-text-muted uk-text-bold uk-text-bolder"
-                  href="index.jsp"
-                  >Help Desk</a
+                  href="adminHome.jsp"
+                  >Help Desk Admin</a
                 >
               </div>
               <div class="uk-navbar-center uk-hidden@m">
                 <a
                   class="uk-navbar-item uk-logo uk-text-muted uk-text-bold"
-                  href="index.jsp"
-                  >Help Desk</a
+                  href="adminHome.jsp"
+                  >Help Desk Admin</a
                 >
               </div>
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
-                  <li><a href="index.jsp">Home</a></li>
-                  <li><a href="#">menu 01</a></li>
-                  <li><a href="#">menu 02</a></li>
-                  <li><a href="#">menu 03</a></li>
-                  <li><a href="#">menu 04</a></li>
+                  <li><a href="adminHome.jsp">Home</a></li>
+                  
                   <li>
                     <div class="uk-navbar-item">
-                      <a
-                        class="uk-button uk-button-small uk-text-bold"
-                        href="login.jsp"
-                        >Login</a
-                      >
+                      <%
+					if(session.getAttribute("name")==null){
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
+					}else{
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
+						%>
+						<%= session.getAttribute("name")%>
+						 <%
+						out.print("</a>");
+					}
+					%>
                     </div>
                   </li>
                 </ul>

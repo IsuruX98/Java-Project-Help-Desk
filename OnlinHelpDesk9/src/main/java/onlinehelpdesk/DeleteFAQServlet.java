@@ -23,6 +23,7 @@ public class DeleteFAQServlet extends HttpServlet {
 		  boolean rs = faq.deleteEvent(id, heading);
 		  
 		  if(rs) {
+		   request.setAttribute("FAQdelete", "FAQdeleted");
 		   RequestDispatcher rd = request.getRequestDispatcher("adminHome.jsp");
 		   rd.forward(request,response);
 		  }

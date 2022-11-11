@@ -191,7 +191,7 @@
         <div>
           <div class="uk-card uk-background-default">
             <div class="uk-position-center uk-position-relative">
-              <img width="550px" src="/Help Desk//src/img/login.jpg" alt="" />
+              <img width="550px" src="img/delete.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -199,113 +199,118 @@
   
       <!-- responsive menu -->
 
-
-      <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
-        <div class="uk-offcanvas-bar">
-          <a class="uk-logo" href="index.html">Help Desk</a>
-          <button class="uk-offcanvas-close" type="button" data-uk-close></button>
-          <ul
-            class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
+    <div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+      <div class="uk-offcanvas-bar">
+        <a class="uk-logo" href="adminHome.html">Help Desk Admin</a>
+        <button class="uk-offcanvas-close" type="button" data-uk-close></button>
+        <ul
+          class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
+        >
+          <li><a href="adminHome.jsp">Home</a></li>
+                  
+                  <li>
+                    <div class="uk-navbar-item">
+                      <%
+					if(session.getAttribute("name")==null){
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
+					}else{
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
+						%>
+						<%= session.getAttribute("name")%>
+						 <%
+						out.print("</a>");
+					}
+					%>
+                    </div>
+                  </li>
+        </ul>
+        <div class="uk-margin-top uk-text-center">
+          <div
+            data-uk-grid
+            class="uk-child-width-auto uk-grid-small uk-flex-center"
           >
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">menu 01</a></li>
-            <li><a href="#">menu 02</a></li>
-            <li><a href="#">menu 03</a></li>
-            <li><a href="#">menu 04</a></li>
-            <li>
-              <div class="uk-navbar-item">
-                <a class="uk-button uk-button-primary" href="contact.html"
-                  >button</a
-                >
-              </div>
-            </li>
-          </ul>
-          <div class="uk-margin-top uk-text-center">
-            <div
-              data-uk-grid
-              class="uk-child-width-auto uk-grid-small uk-flex-center"
-              >
-              <div>
-                <a
-                  href="https://twitter.com/"
-                  data-uk-icon="icon: twitter"
-                  class="uk-icon-link"
-                  target="_blank"
-                ></a>
-              </div>
-              <div>
-                <a
-                  href="https://www.facebook.com/"
-                  data-uk-icon="icon: facebook"
-                  class="uk-icon-link"
-                  target="_blank"
-                ></a>
-              </div>
-              <div>
-                <a
-                  href="https://www.instagram.com/"
-                  data-uk-icon="icon: instagram"
-                  class="uk-icon-link"
-                  target="_blank"
-                ></a>
-              </div>
-              <div></div>
+            <div>
+              <a
+                href="https://twitter.com/"
+                data-uk-icon="icon: twitter"
+                class="uk-icon-link"
+                target="_blank"
+              ></a>
             </div>
+            <div>
+              <a
+                href="https://www.facebook.com/"
+                data-uk-icon="icon: facebook"
+                class="uk-icon-link"
+                target="_blank"
+              ></a>
+            </div>
+            <div>
+              <a
+                href="https://www.instagram.com/"
+                data-uk-icon="icon: instagram"
+                class="uk-icon-link"
+                target="_blank"
+              ></a>
+            </div>
+            <div></div>
           </div>
         </div>
       </div>
-  
-      <!-- responsive menu ends -->
-  
-      <!-- footer -->
-  
-      <footer
-        class="uk-section uk-background-secondary uk-text-center uk-text-muted"
-      >
-        <div class="uk-container uk-container-small">
-          <div>
-            <ul class="uk-subnav uk-flex-center">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">menu 01</a></li>
-              <li><a href="#">menu 02</a></li>
-            </ul>
-          </div>
-          <div class="uk-margin-medium">
-            <div
-              data-uk-grid
-              class="uk-child-width-auto uk-grid-small uk-flex-center"
-            >
-              <div class="uk-first-column">
-                <a
-                  href="https://twitter.com/"
-                  data-uk-icon="icon: twitter"
-                  class="uk-icon-link uk-icon"
-                  target="_blank"
-                ></a>
-              </div>
-              <div>
-                <a
-                  href="https://www.facebook.com/"
-                  data-uk-icon="icon: facebook"
-                  class="uk-icon-link uk-icon"
-                  target="_blank"
-                ></a>
-              </div>
-              <div>
-                <a
-                  href="https://www.instagram.com/"
-                  data-uk-icon="icon: instagram"
-                  class="uk-icon-link uk-icon"
-                  target="_blank"
-                ></a>
-              </div>
+    </div>
+
+    <!-- responsive menu ends -->
+
+    <!-- footer -->
+
+    <footer
+      class="uk-section uk-background-secondary uk-text-center uk-text-muted"
+    >
+      <div class="uk-container uk-container-small">
+        <div>
+          <ul class="uk-subnav uk-flex-center">
+            <li><a href="index.jsp">Home</a></li>
+            
+          </ul>
+        </div>
+        <div class="uk-margin-medium">
+          <div
+            data-uk-grid
+            class="uk-child-width-auto uk-grid-small uk-flex-center"
+          >
+            <div class="uk-first-column">
+              <a
+                href="https://twitter.com/"
+                data-uk-icon="icon: twitter"
+                class="uk-icon-link uk-icon"
+                target="_blank"
+              ></a>
+            </div>
+            <div>
+              <a
+                href="https://www.facebook.com/"
+                data-uk-icon="icon: facebook"
+                class="uk-icon-link uk-icon"
+                target="_blank"
+              ></a>
+            </div>
+            <div>
+              <a
+                href="https://www.instagram.com/"
+                data-uk-icon="icon: instagram"
+                class="uk-icon-link uk-icon"
+                target="_blank"
+              ></a>
             </div>
           </div>
-          <div class="uk-margin-medium uk-text-small uk-link-muted">
-            &copy; Copyright Help desk. All Rights Reserved
-          </div>
         </div>
-      </footer>
+        <div class="uk-margin-medium uk-text-small uk-link-muted">
+          &copy; Copyright Help desk. All Rights Reserved
+        </div>
+      </div>
+    </footer>
+
+    <!-- footer ends -->
   
       <!-- footer ends -->
     </body>

@@ -53,10 +53,7 @@
               <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
                   <li><a href="adminHome.jsp">Home</a></li>
-                  <li><a href="#">menu 01</a></li>
-                  <li><a href="#">menu 02</a></li>
-                  <li><a href="#">menu 03</a></li>
-                  <li><a href="#">menu 04</a></li>
+                  
                   <li>
                     <div class="uk-navbar-item">
                       <%
@@ -103,6 +100,11 @@
     </header>
 
     <!-- header ends -->
+    
+    <!-- status from java class -->
+	<input type="hidden" id="FAQ" value="<%= request.getAttribute("FAQ")%>">
+	<input type="hidden" id="FAQdelete" value="<%= request.getAttribute("FAQdelete")%>">
+	<input type="hidden" id="FAQupdate" value="<%= request.getAttribute("FAQupdate")%>">
 
     <div class="uk-section">
     
@@ -194,18 +196,23 @@
         <ul
           class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-top uk-text-center uk-text-small"
         >
-          <li><a href="adminHome.html">Admin Home</a></li>
-          <li><a href="#">menu 01</a></li>
-          <li><a href="#">menu 02</a></li>
-          <li><a href="#">menu 03</a></li>
-          <li><a href="#">menu 04</a></li>
-          <li>
-            <div class="uk-navbar-item">
-              <a class="uk-button uk-button-primary" href="contact.html"
-                >button</a
-              >
-            </div>
-          </li>
+          <li><a href="adminHome.jsp">Home</a></li>
+                  
+                  <li>
+                    <div class="uk-navbar-item">
+                      <%
+					if(session.getAttribute("name")==null){
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"login.jsp\">Login</a>");
+					}else{
+						out.print("<a class=\"uk-button uk-button-small uk-text-bold\" href=\"acc.jsp\">");
+						%>
+						<%= session.getAttribute("name")%>
+						 <%
+						out.print("</a>");
+					}
+					%>
+                    </div>
+                  </li>
         </ul>
         <div class="uk-margin-top uk-text-center">
           <div
@@ -252,9 +259,8 @@
       <div class="uk-container uk-container-small">
         <div>
           <ul class="uk-subnav uk-flex-center">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">menu 01</a></li>
-            <li><a href="#">menu 02</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            
           </ul>
         </div>
         <div class="uk-margin-medium">
@@ -295,5 +301,26 @@
     </footer>
 
     <!-- footer ends -->
+    <!-- JS alerts -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>
+
+<script type="text/javascript">
+
+    var FAQ = document.getElementById("FAQ").value;
+    if (FAQ == "FAQadded") {
+        swal("Success", "FAQ added successfully", "success");
+    }
+    var FAQdelete = document.getElementById("FAQdelete").value;
+    if (FAQdelete == "FAQdeleted") {
+        swal("Success", "FAQ deleted successfully", "success");
+    }
+    var FAQupdate = document.getElementById("FAQupdate").value;
+    if (FAQupdate == "FAQupdated") {
+        swal("Success", "FAQ updated successfully", "success");
+    }
+
+</script>
   </body>
 </html>
