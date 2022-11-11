@@ -268,7 +268,7 @@
       <div>
         <div class="uk-card uk-background-default">
           <div class="uk-position-center uk-position-relative">
-            <img width="550px" src="/Help Desk//src/img/login.jpg" alt="" />
+            <img width="550px" src="img/viewticket.jpg" alt="" />
           </div>
         </div>
       </div>

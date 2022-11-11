@@ -150,7 +150,7 @@ pageEncoding="ISO-8859-1"%>
                 <div
                         class="uk-card uk-card uk-card-default uk-card-hover uk-card-body uk-inline uk-border-rounded"
                 >
-                    <a class="uk-position-cover" href="category.html"></a>
+                    <a class="uk-position-cover" href="#"></a>
                     <div class="uk-grid-small" data-uk-grid>
                         <div
                                 class="uk-width-auto uk-text-primary uk-flex uk-flex-middle"
@@ -179,7 +179,7 @@ pageEncoding="ISO-8859-1"%>
                 <div
                         class="uk-card uk-card uk-card-default uk-card-hover uk-card-body uk-inline uk-border-rounded"
                 >
-                    <a class="uk-position-cover" href="category.html"></a>
+                    <a class="uk-position-cover" href="#"></a>
                     <div class="uk-grid-small" data-uk-grid>
                         <div
                                 class="uk-width-auto uk-text-primary uk-flex uk-flex-middle"
@@ -208,7 +208,7 @@ pageEncoding="ISO-8859-1"%>
                 <div
                         class="uk-card uk-card uk-card-default uk-card-hover uk-card-body uk-inline uk-border-rounded"
                 >
-                    <a class="uk-position-cover" href="category.html"></a>
+                    <a class="uk-position-cover" href="#"></a>
                     <div class="uk-grid-small" data-uk-grid>
                         <div
                                 class="uk-width-auto uk-text-primary uk-flex uk-flex-middle"
@@ -237,7 +237,7 @@ pageEncoding="ISO-8859-1"%>
                 <div
                         class="uk-card uk-card uk-card-default uk-card-hover uk-card-body uk-inline uk-border-rounded"
                 >
-                    <a class="uk-position-cover" href="category.html"></a>
+                    <a class="uk-position-cover" href="#"></a>
                     <div class="uk-grid-small" data-uk-grid>
                         <div
                                 class="uk-width-auto uk-text-primary uk-flex uk-flex-middle"
@@ -270,7 +270,10 @@ pageEncoding="ISO-8859-1"%>
     <div class="uk-container">
         <h2 class="uk-text-center">Submit a Ticket</h2>
         <p class="uk-text-muted uk-text-center">
-            ticket eka submit karana eka gana hallak metha nata danna ona loku hallak nemei vade vena vidiya gana damma nm hari
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores
+            quaerat nihil delectus sequi! Quas, reiciendis provident natus quidem
+            dolorum voluptatum autem magnam. Ipsum dolor facere nihil sapiente
+            sunt porro earum.
         </p>
 
         <!-- Submit a Ticket button -->
